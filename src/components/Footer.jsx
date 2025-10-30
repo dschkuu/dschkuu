@@ -8,7 +8,12 @@ function Footer() {
         <div className="footer-column">
           <h3>DSC</h3>
           <ul>
-            <li><a href="#anasayfa">Ana Sayfa</a></li>
+            <li><a
+              href="#home-top"
+            >
+              Ana Sayfa
+            </a>
+            </li>
             <li><a href="#hakkimizda">Hakkımızda</a></li>
             <li><a href="#blog">Blog/Etkinliklerimiz</a></li>
             <li><a href="#sponsorlar">Sponsorlarımız</a></li>

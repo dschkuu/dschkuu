@@ -11,7 +11,7 @@ function Navbar() {
         </a>
       </div>
       <div className="navbar-right">
-        <a href="#anasayfa">Anasayfa</a>
+        <a href="#home-top">Anasayfa</a>
         <a href="#hakkimizda">Hakkımızda</a>
         <a href="#blog">Blog/Etkinliklerimiz</a>
         <a href="#sponsorlar">Sponsorlarımız</a>

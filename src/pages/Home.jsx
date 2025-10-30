@@ -13,6 +13,7 @@ function Home() {
 
     return (
         <main
+            id="home-top"
             style={{
                 display: "flex",
                 alignItems: "center",
