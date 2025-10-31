@@ -1,0 +1,138 @@
+.blog-section {
+  padding: 80px 60px;
+  /* Standart ekran için 60px sağ/sol boşluk */
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.blog-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #000000;
+  text-align: left;
+}
+
+.blog-layout {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  /* Kartları ortaya hizala */
+}
+
+/* Ana Kart Stilleri */
+.main-card {
+  flex: 1 1 300px;
+  max-width: 350px;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.main-card img {
+  width: 100%;
+  height: 300px;
+  /* Sabit bir yükseklik vererek dikey boşluğu dengelemeyi deneyin */
+  object-fit: cover;
+}
+
+/* DÜZELTME: Ana kartın yazısı için stil eklendi (mobil sorunu çözer) */
+.main-card p {
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+}
+
+/* Yan Kart Grubu Stilleri */
+.side-cards {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.top-cards,
+.bottom-cards {
+  display: flex;
+  gap: 15px;
+  /* Mobil görünümde kartların yan yana durmasına yardımcı olur */
+}
+
+/* Küçük Kart Stilleri */
+.small-card {
+  flex: 1;
+  /* Yan gruptaki kartların eşit yayılmasını sağlar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  background-color: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.small-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.small-card p {
+  padding: 8px;
+  font-weight: 500;
+  color: #333333;
+  text-align: center;
+}
+
+/* Responsive Düzenleme (Mobil Görünüm) */
+@media (max-width: 600px) {
+
+  /* DÜZELTME: Mobil cihazlarda sayfa kenar boşluğunu azalt */
+  .blog-section {
+    padding: 40px 20px;
+    /* Yan boşluklar 60px'den 20px'e düştü */
+  }
+
+  .blog-layout {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* DÜZELTME: Kartların başlangıçtan hizalanmasını kaldırıp, içeriğe göre hizala */
+    align-items: flex-start;
+    /* BU KURALI VEYA DİĞER HİZALAMA KURALINI KULLANMA! */
+
+    /* Ya da, eğer align-items: flex-start; kuralı başka bir yerde tanımlıysa, SİL.
+     Eğer tüm kartların aynı hizadan başlaması gerekiyorsa: */
+    align-items: stretch;
+    /* Kartların dikeyde esnemesini sağlar (çoğu zaman işe yarar) */
+
+    justify-content: center;
+  }
+
+  /* DÜZELTME: Kart genişliklerini %100 yap (yan boşlukları doldurmak için) */
+  .main-card,
+  .side-cards {
+    width: 100%;
+    max-width: 400px;
+    /* Kartların çok büyük olmasını engelle */
+  }
+
+  .top-cards,
+  .bottom-cards {
+    flex-direction: row;
+    /* Küçük kartları hala yan yana tut */
+    justify-content: center;
+  }
+
+  /* Ana kart resminin mobil görünümde yüksekliğini sabitlemek istersen (opsiyonel) */
+  .main-card img {
+    height: 250px;
+  }
+}

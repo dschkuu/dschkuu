@@ -1,17 +1,26 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import BlogDetail from "./pages/BlogDetail";
+import EventDetail from "./pages/EventDetail";
+import BlogEventList from "./pages/BlogEventList";
+import SponsorPage from "./pages/SponsorlarPage";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <main>
-        <Home />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <Navbar /> {/* Route’ların DIŞINDA olacak */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog/:id" element={<BlogDetail />} />
+        <Route path="/event/:id" element={<EventDetail />} />
+        <Route path="/blog-events" element={<BlogEventList />} />
+        <Route path="/sponsors" element={<SponsorPage />} />
+      </Routes>
+      <Footer /> {/* Route’ların DIŞINDA olacak */}
+    </Router>
   );
 }
 

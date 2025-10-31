@@ -1,0 +1,106 @@
+/* ========================================= */
+/* 2. SPONSORLAR BÖLÜMÜ STİLLERİ (GÜNCELLENMİŞ) */
+/* ========================================= */
+.sponsorlar-section {
+  padding: 80px 0; /* Yatay boşlukları section-wrapper'a bırakıyoruz */
+  background-color: #f8f9fa;
+  text-align: left;
+  scroll-margin-top: 80px;
+}
+
+/* Başlık stili (Blog ile aynı hizada olmasını sağlar) */
+.blog-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #000000;
+  text-align: left;
+}
+
+/* Ortak section wrapper - Blog section padding'i ile aynı hiza için KRİTİK */
+.section-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px; /* Blog section padding'i ile AYNI HİZAYI SAĞLAR (60px) */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sponsorlar-grid-container {
+  max-width: 1200px; /* Wrapper ile aynı max-width */
+  margin: 0 auto;
+  padding: 60px 30px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.sponsor-logo-wrapper {
+  flex-basis: 350px;
+  height: 200px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sponsor-logo-wrapper:hover {
+  transform: scale(1.15);
+  opacity: 0.95;
+}
+
+.sponsorlar-image {
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sponsor-logo-wrapper {
+    flex-basis: 220px;
+    height: 140px;
+  }
+
+  .sponsorlar-grid-container {
+    gap: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsor-logo-wrapper {
+    flex-basis: 45%;
+    height: 120px;
+    scroll-margin-top: 120px;
+  }
+
+  .sponsorlar-grid-container {
+    gap: 30px;
+    padding: 40px 20px;
+  }
+
+  /* HİZA NOKTASI DÜZELTME: Mobil görünümde Blog ile aynı boşluk */
+  .section-wrapper {
+    padding: 0 20px; 
+  }
+}
+
+@media (max-width: 500px) {
+  .sponsor-logo-wrapper {
+    flex-basis: 80%;
+    height: 120px;
+  }
+
+  .sponsorlar-grid-container {
+    padding: 30px 15px;
+    gap: 20px;
+  }
+}

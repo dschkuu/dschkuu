@@ -1,0 +1,69 @@
+.hakkimizda-section {
+  padding: 40px 60px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.hakkimizda-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  margin-top: 0; 
+  color: #000000;
+  text-align: left;
+}
+
+.hakkimizda-grid {
+  display: flex;
+  justify-content: center; /* Kartlar ortalansın diye space-between'den center'a alındı */
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.hakkimizda-card {
+  flex: 1 1 300px; /* Temel genişlik 300px, 30% yerine */
+  max-width: 350px;  /* Kartların 350px'den fazla büyümesini engeller */
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  padding: 20px;
+}
+
+.hakkimizda-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hakkimizda-image {
+  width: 90%;
+  height: 200px; /* Resim yüksekliği 220px'den 180px'e düşürüldü */
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.hakkimizda-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* Responsive düzen */
+/* Kırılma noktası 900px'den 768px'e çekildi */
+@media (max-width: 600px) {
+  .hakkimizda-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hakkimizda-card {
+    /* Genişliği 90% veya 100% olarak ayarlayabilirsin */
+    width: 90%; 
+    max-width: 400px; /* Mobil görünümde çok büyümesin */
+  }
+
+  
+}

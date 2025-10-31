@@ -3,43 +3,60 @@
   color: #000000;
   padding: 40px 20px 20px 20px;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-columns {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 80px;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
   margin-bottom: 20px;
 }
 
 .footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1 1 200px;
   margin: 10px;
 }
 
 .footer-column h3 {
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-weight: 700;
+  margin-bottom: 8px; /* başlık ile ilk link arası daha az */
+  text-align: center;
 }
 
 .footer-column ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* linkler sola hizalı */
+  gap: 6px; /* linkler arası boşluk */
 }
 
 .footer-column li {
-  margin-bottom: 5px;
+  width: 100%;
 }
 
 .footer-column a {
   color: #000000;
   text-decoration: none;
   font-weight: 400;
+  transition: color 0.2s;
 }
 
 .footer-column a:hover {
   text-decoration: underline;
+  color: #6ca2f4;
 }
 
 .footer-bottom {
@@ -56,4 +73,19 @@
 
 .footer-bottom a:hover {
   text-decoration: underline;
+}
+
+/* Küçük ekran uyumu */
+@media (max-width: 768px) {
+  .footer-columns {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .footer-column ul {
+    align-items: center;
+    text-align: center;
+    width: auto;
+  }
 }

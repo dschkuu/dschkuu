@@ -1,46 +1,83 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleScroll = (sectionId) => {
+    const scrollToSection = () => {
+      const section = document.querySelector(sectionId);
+      if (!section) return;
+
+      // Navbar yüksekliğini dinamik al
+      const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
+      const y = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    };
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      scrollToSection();
+    }
+  };
+
+  // Eğer Home sayfasına yönlendirilip state ile gelinirse scroll yap
+  React.useEffect(() => {
+    if (location.state?.scrollTo) {
+      const sectionId = location.state.scrollTo;
+      const section = document.querySelector(sectionId);
+      if (section) {
+        const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
+        const y = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
+  const goToBlogEventsPage = (e) => {
+    e.preventDefault();
+    navigate("/blog-events");
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="footer">
       <div className="footer-columns">
         <div className="footer-column">
           <h3>DSC</h3>
           <ul>
-            <li><a
-              href="#home-top"
-            >
-              Ana Sayfa
-            </a>
-            </li>
-            <li><a href="#hakkimizda">Hakkımızda</a></li>
-            <li><a href="#blog">Blog/Etkinliklerimiz</a></li>
-            <li><a href="#sponsorlar">Sponsorlarımız</a></li>
+            <li><a href="#home-top" onClick={(e) => { e.preventDefault(); handleScroll("#home-top"); }}>Ana Sayfa</a></li>
+            <li><a href="#hakkimizda" onClick={(e) => { e.preventDefault(); handleScroll("#hakkimizda"); }}>Hakkımızda</a></li>
+            <li><a href="/blog-events" onClick={goToBlogEventsPage}>Blog/Etkinliklerimiz</a></li>
+            <li><a href="#sponsorlar" onClick={(e) => { e.preventDefault(); handleScroll("#sponsorlar"); }}>Sponsorlarımız</a></li>
           </ul>
         </div>
+
         <div className="footer-column">
           <h3>Sosyal Medya</h3>
           <ul>
-            <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-            <li><a href="https://youtube.com" target="_blank">Youtube</a></li>
-            <li><a href="https://wa.me" target="_blank">Whatsapp</a></li>
-            <li><a href="https://linkedin.com" target="_blank">Linkedin</a></li>
-            <li><a href="https://x.com" target="_blank">X</a></li>
+            <li><a href="https://www.instagram.com/dschasankalyoncu" target="_blank" rel="noreferrer">Instagram</a></li>
+            <li><a href="https://www.youtube.com/@dschku" target="_blank" rel="noreferrer">Youtube</a></li>
+            <li><a href="https://www.linkedin.com/in/dschku" target="_blank" rel="noreferrer">Linkedin</a></li>
+            <li><a href="https://x.com/dsc_hkuu" target="_blank" rel="noreferrer">X</a></li>
           </ul>
         </div>
+
         <div className="footer-column">
           <h3>İletişim</h3>
           <ul>
-            <li><a href="#iletisim">İletişim Formu</a></li>
-            <li><a href="#sss">SSS</a></li>
-            <li><a href="#gizlilik">Gizlilik & Güvenlik</a></li>
+            <li><a href="#iletisim" onClick={(e) => { e.preventDefault(); handleScroll("#iletisim"); }}>İletişim Formu</a></li>
+            <li><a href="#sss" onClick={(e) => { e.preventDefault(); handleScroll("#sss"); }}>SSS</a></li>
+            <li><a href="#gizlilik" onClick={(e) => { e.preventDefault(); handleScroll("#gizlilik"); }}>Gizlilik & Güvenlik</a></li>
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
-        Made by <a href="https://busrayagcioglu.netlify.app/" target="_blank">Büşra Yağcıoğlu</a>. All Rights Reserved 2025
+        Made by <a href="https://busrayagcioglu.netlify.app/" target="_blank" rel="noreferrer">Büşra Yağcıoğlu</a>. All Rights Reserved 2025
       </div>
     </footer>
   );

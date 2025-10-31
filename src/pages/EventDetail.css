@@ -1,0 +1,166 @@
+/* Ana Konteyner ve Düzen */
+.event-detail-container {
+    max-width: 1000px; /* Blog'dan biraz daha geniş olabilir */
+    margin: 40px auto 80px auto; 
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Geri Butonu Stili (Blog ile aynı, bu sayede tutarlılık sağlanır) */
+.back-button {
+    background: none;
+    border: none;
+    color: #4A5568; 
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: sticky; 
+    top: 20px; 
+    z-index: 10;
+}
+
+.back-button:hover {
+    color: #000000; 
+    background-color: #f0f0f0;
+}
+
+/* Resim Alanı */
+.event-image-wrapper {
+    margin-bottom: 50px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); 
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.event-image {
+    width: 100%;
+    height: 500px; /* Daha büyük görsel ile dikkat çekme */
+    object-fit: cover;
+    display: block;
+}
+
+/* Başlık */
+.event-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 0 50px;
+}
+
+.event-title {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #1A202C;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* Tarih ve Konum Meta Kutusu (Öncelikli Bilgiler) */
+.event-meta-box {
+    display: flex;
+    gap: 40px;
+    padding: 20px 40px;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    background-color: #F7FAFC; /* Hafif arka plan ile vurgulama */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.meta-icon {
+    font-size: 2rem;
+}
+
+.meta-text strong {
+    display: block;
+    font-size: 1rem;
+    color: #718096;
+    font-weight: 600;
+}
+
+.meta-text span {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2D3748;
+}
+
+/* Açıklama Alanı */
+.event-description {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.event-description h2 {
+    font-size: 1.8rem;
+    color: #1A202C;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3182CE;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.event-description p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4A5568;
+    text-align: justify;
+}
+
+/* RESPONSIVE AYARLAR */
+@media (max-width: 800px) {
+    .event-image {
+        height: 350px;
+    }
+    .event-header {
+        padding: 0 20px;
+    }
+    .event-meta-box {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        width: 90%;
+    }
+    .event-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .event-detail-container {
+        margin: 20px auto 40px auto;
+        padding: 0 15px;
+    }
+    .back-button {
+        position: static; 
+        padding-left: 0;
+    }
+    .event-image {
+        height: 250px;
+    }
+    .event-title {
+        font-size: 2rem; 
+        text-align: left;
+    }
+    .event-header {
+        align-items: flex-start;
+        padding: 0;
+    }
+    .event-description {
+        padding: 0;
+    }
+}

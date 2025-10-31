@@ -1,0 +1,114 @@
+/* Ana Konteyner ve Düzen */
+.detail-container {
+    max-width: 900px; /* Okumayı kolaylaştırmak için ana içerik genişliği */
+    margin: 40px auto 80px auto; /* Üst/Alt büyük boşluk, ortalama */
+    padding: 0 20px; /* Kenarlarda mobil uyumlu boşluk */
+    font-family: 'Inter', sans-serif; /* Modern ve okunaklı bir font (varsayılan) */
+}
+
+/* Geri Butonu Stili */
+.back-button {
+    background: none;
+    border: none;
+    color: #4A5568; /* İçerik metniyle aynı renk */
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+    display: flex; 
+    align-items: center;
+    gap: 8px;
+    
+    /* Konteynerin içinde sol üst köşeye sabitle */
+    position: sticky; 
+    top: 20px; 
+    z-index: 10; 
+}
+
+.back-button:hover {
+    color: #000000; /* Hover'da daha canlı bir renk */
+    background-color: #f0f0f0;
+}
+
+/* Başlık */
+.detail-title {
+    font-size: 3rem; /* Çok büyük başlık */
+    font-weight: 900; /* Ekstra kalın */
+    color: #1A202C; /* Koyu gri, profesyonel renk */
+    margin-bottom: 30px;
+    line-height: 1.2;
+    text-align: center; /* Başlığı ortala */
+}
+
+/* Resim Alanı */
+.detail-image-wrapper {
+    margin-bottom: 50px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Hafif, etkileyici bir gölge */
+    border-radius: 16px; /* Daha belirgin yuvarlatılmış köşeler */
+    overflow: hidden; 
+}
+
+.detail-image {
+    width: 100%;
+    height: 450px; /* Görseli ön plana çıkaran sabit yükseklik */
+    object-fit: cover;
+    display: block;
+}
+
+/* İçerik */
+.detail-content {
+    font-size: 1.15rem;
+    line-height: 1.8; /* Mükemmel okuma satır aralığı */
+    color: #4A5568; /* Yumuşak içerik rengi */
+    padding: 0 50px; /* İçeriğin yanlardan biraz daraltılması (daha okunaklı) */
+}
+
+/* İçerik içindeki paragraflar */
+.detail-content p {
+    margin-bottom: 1.5em;
+    text-align: justify;
+}
+
+/* RESPONSIVE AYARLAR */
+@media (max-width: 900px) {
+    .detail-content {
+        padding: 0 10px; /* Daha küçük ekranlarda içeriği genişlet */
+    }
+}
+
+@media (max-width: 600px) {
+    .detail-container {
+        margin: 20px auto 40px auto;
+        padding: 0 15px;
+    }
+    
+    .back-button {
+        position: static; /* Mobil görünümde sticky olmasın, akışta kalsın */
+        margin-left: 0;
+        margin-top: 10px;
+        padding-left: 0; /* Sol tarafta boşluk bırakmamak için */
+    }
+
+    .detail-title {
+        font-size: 2rem; 
+        margin-bottom: 20px;
+        text-align: left; /* Mobil küçük ekranlarda sola yasla */
+    }
+
+    .detail-image {
+        height: 250px; /* Mobil görsel yüksekliğini azalt */
+    }
+    
+    .detail-image-wrapper {
+        border-radius: 10px;
+    }
+
+    .detail-content {
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0; /* Mobil ekranda tam genişlik kullan */
+    }
+}

@@ -3,13 +3,14 @@
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 15px 60px; /* genişlik artırıldı */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
+/* Sol kısım */
 .navbar-left .logo {
   display: flex;
   align-items: center;
@@ -25,16 +26,65 @@
 .logo-text {
   font-weight: bold;
   color: #000000;
-  font-size: 1.1em;
+  font-size: 1.15em;
 }
 
-.navbar-right a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #000000;
+/* Sağdaki linkler */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* biraz daha aralık */
+}
+
+.navbar-right button {
+  background: none;
+  border: none;
   font-weight: 500;
+  cursor: pointer;
+  color: #000;
+  font-size: 1em;
 }
 
-.navbar-right a:hover {
+.navbar-right button:hover {
   text-decoration: underline;
+}
+
+/* Hamburger menü ikonu */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+/* --- Mobil görünüm --- */
+@media (max-width: 960px) {
+  .menu-icon {
+    display: block;
+    color: #000;
+  }
+
+  .navbar {
+    padding: 10px 25px; /* mobilde daraltıldı */
+  }
+
+  .navbar-right {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #ffffff;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 20px 0;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-right.active {
+    display: flex;
+  }
+
+  .navbar-right button {
+    margin: 10px 0;
+    font-size: 1.05em;
+  }
 }
