@@ -141,10 +141,26 @@ function Footer() {
             </li>
             <li>
               <a
-                href="#gizlilik"
-                onClick={(e) => handleFooterClick(e, "#gizlilik", "/iletisim")}
+                href="/terms"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/terms");
+                  window.scrollTo(0, 0);
+                }}
               >
-                Gizlilik & Güvenlik
+                Kullanım Şartları
+              </a>
+            </li>
+            <li>
+              <a
+                href="/privacy"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/privacy");
+                  window.scrollTo(0, 0);
+                }}
+              >
+                Gizlilik Politikası
               </a>
             </li>
           </ul>
@@ -152,16 +168,16 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        Made by{" "}
+        © {new Date().getFullYear()}{" "}
         <a
           href="https://busrayagcioglu.netlify.app/"
           target="_blank"
           rel="noreferrer"
         >
           Büşra Yağcıoğlu
-        </a>
-        . All Rights Reserved 2025
+        </a>. All Rights Reserved.
       </div>
+
     </footer>
   );
 }

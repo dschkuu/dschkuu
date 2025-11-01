@@ -8,7 +8,8 @@ import EventDetail from "./pages/EventDetail";
 import BlogEventList from "./pages/BlogEventList";
 import SponsorPage from "./pages/SponsorlarPage";
 import IletisimPage from "./pages/IletisimPage";
-
+import TermsPage from "./pages/TermsPage";
+import PrivacyPage from "./pages/PrivacyPage";
 function App() {
   return (
     <Router>
@@ -20,6 +21,8 @@ function App() {
         <Route path="/blog-events" element={<BlogEventList />} />
         <Route path="/sponsors" element={<SponsorPage />} />
         <Route path="/iletisim" element={<IletisimPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
       </Routes>
       <Footer /> {/* Route’ların DIŞINDA olacak */}
     </Router>
