@@ -80,7 +80,10 @@ function EventDetail() {
             {/* Açıklama */}
             <div className="event-description">
                 <h2>Etkinlik Açıklaması</h2>
-                <p>{event.description}</p>
+                <div
+                    className="description-content"
+                    dangerouslySetInnerHTML={{ __html: event.description }}
+                />
             </div>
 
         </div>

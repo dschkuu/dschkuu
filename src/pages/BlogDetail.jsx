@@ -58,7 +58,10 @@ function BlogDetail() {
 
             {/* 4. İçerik */}
             <div className="detail-content">
-                <p>{blog.content}</p>
+                <div
+                    className="content-html"
+                    dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
             </div>
         </div>
     );
