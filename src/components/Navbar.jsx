@@ -8,12 +8,15 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // 🔧 Hakkımızda başlığına fazla boşluk olmaması için offset ayarladık (-10px daha yukarı)
   const scrollToSection = (sectionId) => {
     const section = document.querySelector(sectionId);
     if (!section) return;
 
     const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-    const y = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+    const extraOffset = 10; // 🔧 Fazla boşluğu azaltmak için eklendi
+    const y = section.getBoundingClientRect().top + window.pageYOffset - (navbarHeight - extraOffset);
+
     window.scrollTo({ top: y, behavior: "smooth" });
   };
 
@@ -32,7 +35,6 @@ function Navbar() {
       const sectionId = location.state.scrollTo;
       setTimeout(() => {
         scrollToSection(sectionId);
-        // state temizleme
         window.history.replaceState({}, document.title);
       }, 100);
     }

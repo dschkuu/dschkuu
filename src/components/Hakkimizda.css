@@ -1,7 +1,8 @@
 .hakkimizda-section {
   padding: 80px 60px;
   background-color: #f8f9fa;
-  text-align: center;
+  text-align: left;
+  scroll-margin-top: 80px;
 }
 
 .hakkimizda-title {
@@ -10,12 +11,20 @@
   margin-bottom: 50px;
   color: #000000;
   text-align: left;
+
 }
 
 .hakkimizda-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 40px;
 }
 

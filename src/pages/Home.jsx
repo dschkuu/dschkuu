@@ -17,7 +17,7 @@ function Home() {
     });
   }, []);
 
-  // Dinamik scroll: farklı sayfadan gelindiğinde veya state ile yönlendirme
+  // Dinamik scroll (navbar offset ayarlı)
   useEffect(() => {
     if (location.state?.scrollTo) {
       const timer = setTimeout(() => {
@@ -27,10 +27,8 @@ function Home() {
           const y = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
           window.scrollTo({ top: y, behavior: "smooth" });
         }
-        // state temizleme
         navigate(location.pathname, { replace: true, state: {} });
-      }, 100); // 100ms delay ile DOM hazır olmasını sağlıyoruz
-
+      }, 100);
       return () => clearTimeout(timer);
     }
   }, [location, navigate]);
@@ -43,20 +41,30 @@ function Home() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "60px",
+          padding: "80px 60px",
           gap: "50px",
           flexWrap: "wrap",
           flex: 1,
+          minHeight: "90vh", // 🔥 Dikeyde alanı artırır
+          boxSizing: "border-box",
         }}
       >
+        {/* Sol görsel */}
         <div style={{ flex: "1 1 45%", minWidth: "300px" }}>
           <img
             src={Resim1}
             alt="Hero Görseli"
-            style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              maxHeight: "550px", // 🔧 Dilersen maksimum yükseklik sınırlaması
+              objectFit: "cover",
+              borderRadius: "12px",
+            }}
           />
         </div>
 
+        {/* Sağ metin */}
         <div
           style={{
             flex: "1 1 45%",

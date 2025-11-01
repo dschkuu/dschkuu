@@ -37,6 +37,8 @@ function BlogEtkinliklerimiz() {
   const handleClick = (item) => {
     if (item.type === "blog") navigate(`/blog/${item.id}`);
     else navigate(`/event/${item.id}`);
+
+    // Sayfa değiştikten hemen sonra en üste kaydır
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -47,16 +49,28 @@ function BlogEtkinliklerimiz() {
       <div className="blog-layout">
         {items.length > 0 ? (
           <>
+            {/* Ana büyük kart */}
             <div className="main-card" onClick={() => handleClick(items[0])}>
-              <img src={items[0].image || siteLogo} alt={items[0].title || items[0].name} />
+              <img
+                src={items[0].image || siteLogo}
+                alt={items[0].title || items[0].name}
+              />
               <p>{items[0].title || items[0].name}</p>
             </div>
 
+            {/* Sağdaki kart grubu */}
             <div className="side-cards">
               <div className="top-cards">
                 {items.slice(1, 4).map((item) => (
-                  <div key={item.id} className="small-card" onClick={() => handleClick(item)}>
-                    <img src={item.image || siteLogo} alt={item.title || item.name} />
+                  <div
+                    key={item.id}
+                    className="small-card"
+                    onClick={() => handleClick(item)}
+                  >
+                    <img
+                      src={item.image || siteLogo}
+                      alt={item.title || item.name}
+                    />
                     <p>{item.title || item.name}</p>
                   </div>
                 ))}
@@ -64,8 +78,15 @@ function BlogEtkinliklerimiz() {
 
               <div className="bottom-cards">
                 {items.slice(4, 6).map((item) => (
-                  <div key={item.id} className="small-card" onClick={() => handleClick(item)}>
-                    <img src={item.image || siteLogo} alt={item.title || item.name} />
+                  <div
+                    key={item.id}
+                    className="small-card"
+                    onClick={() => handleClick(item)}
+                  >
+                    <img
+                      src={item.image || siteLogo}
+                      alt={item.title || item.name}
+                    />
                     <p>{item.title || item.name}</p>
                   </div>
                 ))}
