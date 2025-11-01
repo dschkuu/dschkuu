@@ -1,0 +1,116 @@
+.iletisim-page {
+  padding: 30px 80px 60px 80px;
+  color: #222;
+  background-color: #fff;
+  line-height: 1.6;
+
+  /* 🎬 Blog/Etkinliklerimiz sayfasındakiyle aynı giriş efekti */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Başlık hizalaması Blog/Etkinliklerimiz ile aynı */
+.page-title {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  text-align: left;
+}
+
+/* Alt başlıklar (Bizimle... ve SSS) aynı büyüklükte ve hizada */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Açıklama kısmı */
+.iletisim-intro {
+  font-size: 1.05rem;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+/* E-posta kısmı */
+.iletisim-mail {
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+/* Mail linki */
+.mail-link {
+  color: #1a73e8;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.mail-link:hover {
+  color: #0b5ed7;
+}
+
+/* SSS bölümü */
+.sss-section {
+  margin-top: 50px;
+}
+
+/* Soru cevap kutuları arasında boşluk */
+.sss-item {
+  margin-bottom: 30px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
+  /* Her kutu sırasıyla hafifçe görünür */
+  opacity: 0;
+  transform: translateY(15px);
+  animation: rowFadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--i, 0) * 0.1s);
+}
+
+@keyframes rowFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Soru ve cevap arasında belirgin boşluk */
+.sss-question {
+  margin-bottom: 10px;
+}
+
+.sss-answer {
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .iletisim-page {
+    padding: 40px 20px;
+  }
+
+  .page-title,
+  .section-title {
+    font-size: 1.7rem;
+    text-align: left;
+  }
+
+  .sss-item {
+    padding: 16px;
+  }
+}

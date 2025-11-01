@@ -33,6 +33,12 @@ function Home() {
     }
   }, [location, navigate]);
 
+  // 🔹 Yeni fonksiyon: "Etkinlikleri Gör" butonu için
+  const goToBlogEvents = () => {
+    navigate("/blog-events");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
       <main
@@ -57,7 +63,7 @@ function Home() {
             style={{
               width: "100%",
               height: "100%",
-              maxHeight: "550px", // 🔧 Dilersen maksimum yükseklik sınırlaması
+              maxHeight: "550px",
               objectFit: "cover",
               borderRadius: "12px",
             }}
@@ -81,7 +87,9 @@ function Home() {
           <h2 style={{ fontSize: "1.5rem", fontWeight: "400", marginBottom: "30px" }}>
             DSC Hasan Kalyoncu Üniversitesi
           </h2>
+
           <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+            {/* Üye Ol butonu */}
             <a
               href={joinLink}
               target="_blank"
@@ -99,8 +107,10 @@ function Home() {
             >
               Hemen Üye Ol!
             </a>
-            <a
-              href="#blog-events"
+
+            {/* Etkinlikleri Gör butonu */}
+            <button
+              onClick={goToBlogEvents}
               style={{
                 backgroundColor: "white",
                 color: "black",
@@ -111,10 +121,11 @@ function Home() {
                 border: "1px solid black",
                 flex: "1 1 150px",
                 textAlign: "center",
+                cursor: "pointer",
               }}
             >
               Etkinlikleri Gör
-            </a>
+            </button>
           </div>
         </div>
       </main>

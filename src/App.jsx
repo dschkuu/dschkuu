@@ -7,6 +7,7 @@ import BlogDetail from "./pages/BlogDetail";
 import EventDetail from "./pages/EventDetail";
 import BlogEventList from "./pages/BlogEventList";
 import SponsorPage from "./pages/SponsorlarPage";
+import IletisimPage from "./pages/IletisimPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/event/:id" element={<EventDetail />} />
         <Route path="/blog-events" element={<BlogEventList />} />
         <Route path="/sponsors" element={<SponsorPage />} />
+        <Route path="/iletisim" element={<IletisimPage />} />
       </Routes>
       <Footer /> {/* Route’ların DIŞINDA olacak */}
     </Router>

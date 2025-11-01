@@ -8,21 +8,17 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // 🔧 Hakkımızda başlığına fazla boşluk olmaması için offset ayarladık (-10px daha yukarı)
   const scrollToSection = (sectionId) => {
     const section = document.querySelector(sectionId);
     if (!section) return;
-
     const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-    const extraOffset = 10; // 🔧 Fazla boşluğu azaltmak için eklendi
+    const extraOffset = 10;
     const y = section.getBoundingClientRect().top + window.pageYOffset - (navbarHeight - extraOffset);
-
     window.scrollTo({ top: y, behavior: "smooth" });
   };
 
   const handleSectionNavigation = (sectionId) => {
     setMenuOpen(false);
-
     if (location.pathname === "/") {
       scrollToSection(sectionId);
     } else {
@@ -46,6 +42,12 @@ function Navbar() {
     window.scrollTo(0, 0);
   };
 
+  const goToIletisimPage = () => {
+    setMenuOpen(false);
+    navigate("/iletisim");
+    window.scrollTo(0, 0);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -64,7 +66,7 @@ function Navbar() {
         <button onClick={() => handleSectionNavigation("#hakkimizda")}>Hakkımızda</button>
         <button onClick={goToBlogEventsPage}>Blog/Etkinliklerimiz</button>
         <button onClick={() => handleSectionNavigation("#sponsorlar")}>Sponsorlarımız</button>
-        <button onClick={() => handleSectionNavigation("#iletisim")}>İletişim</button>
+        <button onClick={goToIletisimPage}>İletişim</button>
       </div>
     </nav>
   );
