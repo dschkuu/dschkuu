@@ -37,11 +37,7 @@ function BlogEtkinliklerimiz() {
   const handleClick = (item) => {
     if (item.type === "blog") navigate(`/blog/${item.id}`);
     else navigate(`/event/${item.id}`);
-    // Sayfa değiştikten hemen sonra en üste kaydır
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -51,13 +47,11 @@ function BlogEtkinliklerimiz() {
       <div className="blog-layout">
         {items.length > 0 ? (
           <>
-            {/* Ana dikey kart */}
             <div className="main-card" onClick={() => handleClick(items[0])}>
               <img src={items[0].image || siteLogo} alt={items[0].title || items[0].name} />
               <p>{items[0].title || items[0].name}</p>
             </div>
 
-            {/* Sağdaki kartlar */}
             <div className="side-cards">
               <div className="top-cards">
                 {items.slice(1, 4).map((item) => (
@@ -83,7 +77,6 @@ function BlogEtkinliklerimiz() {
         )}
       </div>
     </section>
-
   );
 }
 

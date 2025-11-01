@@ -25,33 +25,29 @@ function Sponsorlar() {
     getSponsors();
   }, []);
 
-  const handleClick = () => {
-    navigate("/sponsors");
-  };
+  const handleClick = () => navigate("/sponsors");
 
   if (loading) return <p style={{ padding: "20px" }}>Sponsorlar yükleniyor...</p>;
   if (error) return <p style={{ padding: "20px", color: "red" }}>{error}</p>;
 
   return (
     <section id="sponsorlar" className="sponsorlar-section">
-      <div className="section-wrapper">
-        <h2 className="blog-title">Sponsorlarımız</h2>
-        {/* DÜZENLEME: Başlık sınıfı 'blog-title' olarak değiştirildi */}
-        <div className="sponsorlar-grid-container">
-          {sponsors.map((sponsor) => (
-            <div
-              key={sponsor.id || Math.random()}
-              className="sponsor-logo-wrapper"
-              onClick={handleClick}
-            >
-              <img
-                src={sponsor.image || defaultLogo}
-                alt={sponsor.name || "Sponsor"}
-                className="sponsorlar-image"
-              />
-            </div>
-          ))}
-        </div>
+      <h2 className="sponsorlar-title">Sponsorlarımız</h2>
+
+      <div className="sponsorlar-grid">
+        {sponsors.map((sponsor) => (
+          <div
+            key={sponsor.id || Math.random()}
+            className="sponsor-logo-wrapper"
+            onClick={handleClick}
+          >
+            <img
+              src={sponsor.image || defaultLogo}
+              alt={sponsor.name || "Sponsor"}
+              className="sponsorlar-image"
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
