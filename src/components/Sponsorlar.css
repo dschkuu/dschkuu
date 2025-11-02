@@ -14,7 +14,7 @@
 }
 
 .sponsorlar-grid {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 60px 30px;
   background-color: white;
@@ -24,33 +24,52 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 50px;
 }
 
 .sponsor-logo-wrapper {
-  flex-basis: 350px;
-  height: 200px;
+  /* BÜYÜK EKRANLAR İÇİN BOYUTLAR ARTIRILDI */
+  flex-basis: 300px; /* Alan genişliği */
+  height: 150px;     /* Alan yüksekliği */
+  padding: 20px;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden; 
 }
 
 .sponsor-logo-wrapper:hover {
-  transform: scale(1.15);
+  transform: scale(1.2);
   opacity: 0.95;
 }
 
 .sponsorlar-image {
-  width: 100%;
-  max-width: 350px;
-  height: 100%;
-  object-fit: contain;
+  width: 100%; 
+  height: 100%; 
+  /* ÖNEMLİ: Resmin kesilmeden, oranları korunarak sığmasını sağlar */
+  object-fit: contain; 
+}
+
+@media (max-width: 1024px) {
+  .sponsor-logo-wrapper {
+    flex-basis: 300px;
+    height: 120px; /* Orta ekranlar için yüksekliği güncellendi */
+  }
 }
 
 @media (max-width: 768px) {
   .sponsorlar-section {
     padding: 40px 20px;
+  }
+  
+  .sponsorlar-grid {
+      gap: 20px; /* Mobil görünümde boşluk azaltıldı */
+  }
+
+  .sponsor-logo-wrapper {
+    flex-basis: 250px;
+    height: 100px; /* Mobil ekranlar için yüksekliği güncellendi */
   }
 }
