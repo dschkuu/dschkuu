@@ -114,3 +114,4 @@ export const fetchArsivEntries = async () => {
     return [];
   }
 };
+export { BASE_URL };
