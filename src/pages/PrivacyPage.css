@@ -67,3 +67,11 @@
     text-align: left;
   }
 }
+.admin-link {
+  color: #000000;
+  cursor: pointer;
+}
+
+.admin-link:hover {
+  color: #000000;
+}

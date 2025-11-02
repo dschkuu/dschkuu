@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./PrivacyPage.css";
+const adminUrl = import.meta.env.VITE_ADMIN_URL;
 
 function PrivacyPage() {
   useEffect(() => {
@@ -19,10 +20,20 @@ function PrivacyPage() {
       <div className="privacy-section">
         <h3 className="section-title">1. Toplanan Bilgiler</h3>
         <p>
-          Siteye giriş yapılmadığı için kişisel veri zorunlu olarak toplanmaz. Ancak, kullanıcı deneyimini
+          Siteye{" "}
+          <a
+            href={adminUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="admin-link"
+          >
+            giriş
+          </a>{" "}
+          yapılmadığı için kişisel veri zorunlu olarak toplanmaz. Ancak, kullanıcı deneyimini
           iyileştirmek ve reklamların doğru gösterilmesi için aşağıdaki veriler otomatik olarak
           toplanabilir:
         </p>
+
         <ul>
           <li>IP adresi ve tarayıcı bilgileri</li>
           <li>Site ziyaret tarih ve saatleri</li>
