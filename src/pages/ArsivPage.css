@@ -1,0 +1,37 @@
+.arsiv-container {
+  max-width: 1000px; /* eski 800px yerine biraz daha geniş */
+  margin: 0 auto;
+  padding: 1.5rem; /* biraz daha az padding */
+}
+
+.arsiv-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.arsiv-photo {
+  width: 100%;
+  max-width: 800px; /* fotoğraf daha geniş gösterilsin */
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.arsiv-description {
+  text-align: justify;
+  white-space: normal;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.arsiv-description p {
+  margin: 0.5rem 0;
+}

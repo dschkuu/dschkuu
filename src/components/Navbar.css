@@ -1,3 +1,4 @@
+/* --- Normal Navbar stilleri --- */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -14,6 +15,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .logo-img {
@@ -24,7 +26,7 @@
 
 .logo-text {
   font-weight: bold;
-  color: #000000;
+  color: #000;
   font-size: 1.15em;
 }
 
@@ -83,4 +85,66 @@
     margin: 10px 0;
     font-size: 1.05em;
   }
+}
+/* Gizli Katman */
+.promo-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.88);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.promo-box {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  max-width: 450px;
+  padding: 30px;
+  border-radius: 15px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.promo-img-top {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.promo-img-bottom {
+  width: 180px;
+  margin-top: 20px;
+}
+
+.promo-code {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #ffcc00;
+  margin: 10px 0;
+  letter-spacing: 3px;
+}
+
+.small-text {
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: none;
+  color: #fff;
+  font-size: 1.8em;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }

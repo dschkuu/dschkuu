@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [clickCount, setClickCount] = useState(0);
 
   const scrollToSection = (sectionId) => {
     const section = document.querySelector(sectionId);
@@ -15,8 +16,15 @@ function Footer() {
     }
   };
 
-  const handleFooterClick = (e, sectionId, targetPage = null) => {
-    e.preventDefault();
+  const handleFooterClick = (e, sectionId = null, targetPage = null) => {
+    // Easter egg: 3 kere tıklayınca arsiv sayfasına yönlendir
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+    if (newCount >= 3) {
+      navigate("/arsiv");
+      setClickCount(0);
+      return;
+    }
 
     if (targetPage && location.pathname !== targetPage) {
       // başka sayfadaysa yönlendir ve state gönder
@@ -167,7 +175,11 @@ function Footer() {
         </div>
       </div>
 
-      <div className="footer-bottom">
+      <div
+        className="footer-bottom"
+        style={{ cursor: "pointer" }}
+        onClick={handleFooterClick}
+      >
         © {new Date().getFullYear()}{" "}
         <a
           href="https://busrayagcioglu.netlify.app/"
@@ -175,7 +187,8 @@ function Footer() {
           rel="noreferrer"
         >
           Büşra Yağcıoğlu
-        </a>. All Rights Reserved.
+        </a>
+        . All Rights Reserved.
       </div>
 
     </footer>

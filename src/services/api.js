@@ -86,3 +86,31 @@ export const fetchSponsors = async () => {
     return [];
   }
 };
+
+// Ekip üyelerini çek
+export const fetchTeamMembers = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/team/`);
+    return response.data.map((member) => ({
+      ...member,
+      photo: member.photo ? `${BASE_URL}${member.photo}` : null,
+    }));
+  } catch (error) {
+    console.error("Error fetching team members:", error);
+    return [];
+  }
+};
+
+// Arşiv girişlerini çek
+export const fetchArsivEntries = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/home/`);
+    return response.data.map((entry) => ({
+      ...entry,
+      photo: entry.photo ? entry.photo : null, // backend full URL veriyor
+    }));
+  } catch (error) {
+    console.error("Error fetching arsiv entries:", error);
+    return [];
+  }
+};

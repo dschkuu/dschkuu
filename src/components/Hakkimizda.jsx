@@ -3,13 +3,20 @@ import "./Hakkimizda.css";
 import Hakkimizda1 from "../assets/hakkimizda1.png";
 import Hakkimizda2 from "../assets/hakkimizda2.png";
 import Hakkimizda3 from "../assets/hakkimizda3.png";
+import { useNavigate } from "react-router-dom";
 
 function Hakkimizda() {
+  const navigate = useNavigate();
+
   const aboutItems = [
     { id: 1, title: "Vizyonumuz - Misyonumuz", image: Hakkimizda1 },
     { id: 2, title: "Ekibimiz", image: Hakkimizda2 },
     { id: 3, title: "Sosyal Medya", image: Hakkimizda3 },
   ];
+
+  const handleClick = (id) => {
+    navigate(`/hakkimizda?section=${id}`);
+  };
 
   return (
     <section id="hakkimizda" className="hakkimizda-section">
@@ -17,8 +24,16 @@ function Hakkimizda() {
 
       <div className="hakkimizda-grid">
         {aboutItems.map((item) => (
-          <div key={item.id} className="hakkimizda-card">
-            <img src={item.image} alt={item.title} className="hakkimizda-image" />
+          <div
+            key={item.id}
+            className="hakkimizda-card"
+            onClick={() => handleClick(item.id)}
+          >
+            <img
+              src={item.image}
+              alt={item.title}
+              className="hakkimizda-image"
+            />
             <p className="hakkimizda-text">{item.title}</p>
           </div>
         ))}
