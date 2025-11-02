@@ -77,10 +77,11 @@ function BlogEventList() {
           onClick={() => handleClick(item)}
         >
           <img
-            src={item.image || logo}
+            src={item.image ? `${BASE_URL}${item.image}` : logo}
             alt={item.title}
             className="blog-event-image"
           />
+
           <div className="blog-event-content">
             <h3>{item.title}</h3>
             <div
