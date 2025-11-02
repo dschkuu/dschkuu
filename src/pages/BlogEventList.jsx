@@ -53,6 +53,18 @@ function BlogEventList() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // HTML içeriğini güvenli şekilde kesen fonksiyon
+  const truncateHTML = (html, maxLength) => {
+    if (!html) return "Açıklama mevcut değil.";
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    let text = div.textContent || div.innerText || "";
+    if (text.length > maxLength) {
+      text = text.slice(0, maxLength) + "...";
+    }
+    return text;
+  };
+
   return (
     <div className="blog-event-list">
       <h2 className="page-title">Blog / Etkinliklerimiz</h2>
@@ -71,11 +83,12 @@ function BlogEventList() {
           />
           <div className="blog-event-content">
             <h3>{item.title}</h3>
-            <p>
-              {item.content
-                ? item.content.slice(0, 120) + "..."
-                : "Açıklama mevcut değil."}
-            </p>
+            <div
+              className="blog-preview"
+              dangerouslySetInnerHTML={{
+                __html: truncateHTML(item.content, 250),
+              }}
+            />
             <div className="blog-event-footer">
               <span className="date">
                 {new Date(item.date).toLocaleDateString("tr-TR")}
