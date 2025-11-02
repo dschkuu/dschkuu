@@ -3,6 +3,7 @@ import { fetchBlogs, fetchEvents } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import "./BlogEventList.css";
 import logo from "../assets/logo.png"; // varsayılan görsel
+import { BASE_URL } from "../services/api";
 
 function BlogEventList() {
   const [items, setItems] = useState([]);
