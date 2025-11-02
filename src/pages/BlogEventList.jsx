@@ -78,7 +78,7 @@ function BlogEventList() {
           onClick={() => handleClick(item)}
         >
           <img
-            src={item.image || logo}
+            src={`https://dscwebsiteback.onrender.com${item.image}`}
             alt={item.title}
             className="blog-event-image"
           />
