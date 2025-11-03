@@ -54,7 +54,7 @@ export const fetchEventDetail = async (id) => {
     const data = response.data;
     return {
       ...data,
-      image: data.image || null, 
+      image: data.image || null,
     };
   } catch (error) {
     console.error("Error fetching event detail:", error);
@@ -79,7 +79,7 @@ export const fetchSponsors = async () => {
     const response = await axios.get(`${API_BASE_URL}/sponsors/`);
     return response.data.map((sponsor) => ({
       ...sponsor,
-      image: sponsor.logo ? `${BASE_URL}${sponsor.logo}` : null,
+      image: sponsor.logo || null
     }));
   } catch (error) {
     console.error("Error fetching sponsors:", error);
@@ -93,7 +93,7 @@ export const fetchTeamMembers = async () => {
     const response = await axios.get(`${API_BASE_URL}/team/`);
     return response.data.map((member) => ({
       ...member,
-      photo: member.photo ? `${BASE_URL}${member.photo}` : null,
+      photo: member.photo || null
     }));
   } catch (error) {
     console.error("Error fetching team members:", error);
