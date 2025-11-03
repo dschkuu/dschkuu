@@ -14,7 +14,7 @@ export default function NotFound() {
         <h1 className="notfound-title">404: Route bulunamadı</h1>
         <p className="notfound-subtitle">Aradığın sayfanın bu olduğuna emin misin? Ben hiç böyle bir sayfa yapmamışım gibi görünüyor.</p>
         <Link to="/" className="notfound-button">
-          Ana sayfaya dön 🏠
+          Ana sayfaya dön🏠
         </Link>
       </div>
     </div>
