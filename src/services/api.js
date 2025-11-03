@@ -10,7 +10,7 @@ export const fetchBlogs = async () => {
     // Görsellerin tam URL’sini oluştur
     return response.data.map((blog) => ({
       ...blog,
-      image: blog.image ? `${BASE_URL}${blog.image}` : null,
+      image: blog.image || null,
     }));
   } catch (error) {
     console.error("Error fetching blogs:", error);
@@ -24,7 +24,7 @@ export const fetchEvents = async () => {
     const response = await axios.get(`${API_BASE_URL}/events/`);
     return response.data.map((event) => ({
       ...event,
-      image: event.image ? `${BASE_URL}${event.image}` : null,
+      image: data.image || null, 
     }));
   } catch (error) {
     console.error("Error fetching events:", error);
@@ -39,7 +39,7 @@ export const fetchBlogDetail = async (id) => {
     const data = response.data;
     return {
       ...data,
-      image: data.image ? `${BASE_URL}${data.image}` : null,
+      image: data.image || null,
     };
   } catch (error) {
     console.error("Error fetching blog detail:", error);
@@ -54,7 +54,7 @@ export const fetchEventDetail = async (id) => {
     const data = response.data;
     return {
       ...data,
-      image: data.image ? `${BASE_URL}${data.image}` : null,
+      image: data.image || null, 
     };
   } catch (error) {
     console.error("Error fetching event detail:", error);
