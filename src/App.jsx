@@ -12,6 +12,7 @@ import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import HakkimizdaPage from "./pages/HakkimizdaPage";
 import ArsivPage from "./pages/ArsivPage";
+import NotFound from "./pages/NotFound";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -46,6 +47,7 @@ function AppContent() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/hakkimizda" element={<HakkimizdaPage />} />
         <Route path="/arsiv" element={<ArsivPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
