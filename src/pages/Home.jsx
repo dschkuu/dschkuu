@@ -3,8 +3,10 @@ import Resim1 from "../assets/resim1.png";
 import { fetchSettings } from "../services/api";
 import AboutSection from "../components/Hakkimizda";
 import BlogEtkinliklerimiz from "../components/BlogEtkinliklerimiz";
-import { useLocation, useNavigate } from "react-router-dom";
 import Sponsorlar from "../components/Sponsorlar";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import "./Home.css"; // ✅ CSS import
 
 function Home() {
   const [joinLink, setJoinLink] = useState("#");
@@ -17,7 +19,6 @@ function Home() {
     });
   }, []);
 
-  // Dinamik scroll (navbar offset ayarlı)
   useEffect(() => {
     if (location.state?.scrollTo) {
       const timer = setTimeout(() => {
@@ -33,7 +34,6 @@ function Home() {
     }
   }, [location, navigate]);
 
-  // 🔹 Yeni fonksiyon: "Etkinlikleri Gör" butonu için
   const goToBlogEvents = () => {
     navigate("/blog-events");
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -41,98 +41,31 @@ function Home() {
 
   return (
     <>
-      <main
-        id="home-top"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "80px 60px",
-          gap: "50px",
-          flexWrap: "wrap",
-          flex: 1,
-          minHeight: "90vh", // 🔥 Dikeyde alanı artırır
-          boxSizing: "border-box",
-        }}
-      >
+      <main className="home-main" id="home-top">
         {/* Sol görsel */}
-        <div style={{ flex: "1 1 45%", minWidth: "300px" }}>
-          <img
-            src={Resim1}
-            alt="Hero Görseli"
-            style={{
-              width: "100%",
-              height: "100%",
-              maxHeight: "550px",
-              objectFit: "cover",
-              borderRadius: "12px",
-            }}
-          />
+        <div className="hero-image">
+          <img src={Resim1} alt="Hero Görseli" />
         </div>
 
         {/* Sağ metin */}
-        <div
-          style={{
-            flex: "1 1 45%",
-            minWidth: "300px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <h1 style={{ fontSize: "3rem", fontWeight: "700", marginBottom: "20px" }}>
+        <div className="hero-text">
+          <h1>
             Öğren. Geliştir. <br />
             Teknoloji ile Geleceği Şekillendir.
           </h1>
-          <h2 style={{ fontSize: "1.5rem", fontWeight: "400", marginBottom: "30px" }}>
-            DSC Hasan Kalyoncu Üniversitesi
-          </h2>
+          <h2>DSC Hasan Kalyoncu Üniversitesi</h2>
 
-          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-            {/* Üye Ol butonu */}
-            <a
-              href={joinLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                backgroundColor: "#6ca2f4",
-                color: "white",
-                padding: "12px 24px",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontWeight: "500",
-                flex: "1 1 150px",
-                textAlign: "center",
-              }}
-            >
+          <div className="buttons">
+            <a href={joinLink} target="_blank" rel="noopener noreferrer">
               Hemen Üye Ol!
             </a>
-
-            {/* Etkinlikleri Gör butonu */}
-            <button
-              onClick={goToBlogEvents}
-              style={{
-                backgroundColor: "white",
-                color: "black",
-                padding: "12px 24px",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontWeight: "500",
-                border: "1px solid black",
-                flex: "1 1 150px",
-                textAlign: "center",
-                cursor: "pointer",
-              }}
-            >
-              Etkinlikleri Gör
-            </button>
+            <button onClick={goToBlogEvents}>Etkinlikleri Gör</button>
           </div>
         </div>
       </main>
 
       <AboutSection />
       <BlogEtkinliklerimiz />
-
       <div id="sponsorlar">
         <Sponsorlar />
       </div>
