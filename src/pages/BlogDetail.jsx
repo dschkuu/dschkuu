@@ -49,7 +49,7 @@ function BlogDetail() {
             {blog.image && (
                 <div className="detail-image-wrapper">
                     <img
-                        src={blog.image.url}
+                        src={`https://dscwebsiteback.onrender.com${blog.image.url}`}
                         alt={blog.title}
                         className="detail-image"
                     />
