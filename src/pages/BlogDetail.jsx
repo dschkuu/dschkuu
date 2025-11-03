@@ -49,7 +49,7 @@ function BlogDetail() {
             {blog.image && (
                 <div className="detail-image-wrapper">
                     <img
-                        src={blog.image}
+                        src={blog.image.url}
                         alt={blog.title}
                         className="detail-image"
                     />

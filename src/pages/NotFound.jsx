@@ -12,7 +12,7 @@ export default function NotFound() {
         </div>
 
         <h1 className="notfound-title">404: Route bulunamadı</h1>
-        <p className="notfound-subtitle">Sanırım Bruce Banner (Hulk), sunucuya sinirlenip bu route'u kırmış. Ben de tam Hulk'a sakinleştirici çay ☕ hazırlıyordum. Ne yazık ki bu bir try-catch hatası değil, bildiğiniz hata.</p>
+        <p className="notfound-subtitle">Aradığın sayfanın bu olduğuna emin misin? Ben hiç böyle bir sayfa yapmamışım gibi görünüyor.</p>
         <Link to="/" className="notfound-button">
           Ana sayfaya dön 🏠
         </Link>
