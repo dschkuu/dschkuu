@@ -24,7 +24,7 @@ export const fetchEvents = async () => {
     const response = await axios.get(`${API_BASE_URL}/events/`);
     return response.data.map((event) => ({
       ...event,
-      image: data.image || null, 
+      image: event.image || null,
     }));
   } catch (error) {
     console.error("Error fetching events:", error);
