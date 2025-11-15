@@ -78,10 +78,11 @@ function BlogEventList() {
           onClick={() => handleClick(item)}
         >
           <img
-            src={`https://dscwebsiteback.onrender.com${item.image}`}
+            src={item.image || logo} // Eğer image yoksa default logo göster
             alt={item.title}
             className="blog-event-image"
           />
+
 
           <div className="blog-event-content">
             <h3>{item.title}</h3>
