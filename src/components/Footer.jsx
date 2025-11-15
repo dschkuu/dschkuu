@@ -11,27 +11,37 @@ function Footer() {
     const section = document.querySelector(sectionId);
     if (section) {
       const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-      const y = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+      const y =
+        section.getBoundingClientRect().top +
+        window.pageYOffset -
+        navbarHeight;
+
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
+  // --- Footer linkleri için: sadece scroll/navigate yap, Easter egg yok ---
   const handleFooterClick = (e, sectionId = null, targetPage = null) => {
-    // Easter egg: 3 kere tıklayınca arsiv sayfasına yönlendir
-    const newCount = clickCount + 1;
-    setClickCount(newCount);
-    if (newCount >= 3) {
-      navigate("/arsiv");
-      setClickCount(0);
-      return;
-    }
+    e.preventDefault();
+    setClickCount(0); // Her link tıklanınca reset
 
     if (targetPage && location.pathname !== targetPage) {
-      // başka sayfadaysa yönlendir ve state gönder
       navigate(targetPage, { state: { scrollTo: sectionId } });
     } else {
       scrollToSection(sectionId);
     }
+  };
+
+  // --- Easter egg sadece footer-bottom için çalışacak ---
+  const handleEasterEgg = () => {
+    setClickCount((prev) => {
+      const newVal = prev + 1;
+      if (newVal >= 3) {
+        navigate("/arsiv");
+        return 0;
+      }
+      return newVal;
+    });
   };
 
   // Sayfa değişiminde scroll yapılacaksa uygula
@@ -44,6 +54,7 @@ function Footer() {
 
   const goToBlogEventsPage = (e) => {
     e.preventDefault();
+    setClickCount(0);
     navigate("/blog-events");
     window.scrollTo(0, 0);
   };
@@ -51,12 +62,14 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-columns">
+
+        {/* --- COLUMN 1 --- */}
         <div className="footer-column">
           <h3>DSC</h3>
           <ul>
             <li>
               <a
-                href="#home-top"
+                href=""
                 onClick={(e) => handleFooterClick(e, "#home-top", "/")}
               >
                 Ana Sayfa
@@ -64,20 +77,20 @@ function Footer() {
             </li>
             <li>
               <a
-                href="#hakkimizda"
+                href=""
                 onClick={(e) => handleFooterClick(e, "#hakkimizda", "/")}
               >
                 Hakkımızda
               </a>
             </li>
             <li>
-              <a href="/blog-events" onClick={goToBlogEventsPage}>
+              <a href="" onClick={goToBlogEventsPage}>
                 Blog / Etkinliklerimiz
               </a>
             </li>
             <li>
               <a
-                href="#sponsorlar"
+                href=""
                 onClick={(e) => handleFooterClick(e, "#sponsorlar", "/")}
               >
                 Sponsorlarımız
@@ -86,6 +99,7 @@ function Footer() {
           </ul>
         </div>
 
+        {/* --- COLUMN 2 --- */}
         <div className="footer-column">
           <h3>Sosyal Medya</h3>
           <ul>
@@ -128,20 +142,23 @@ function Footer() {
           </ul>
         </div>
 
+        {/* --- COLUMN 3 --- */}
         <div className="footer-column">
           <h3>İletişim</h3>
           <ul>
             <li>
               <a
-                href="#iletisim"
-                onClick={(e) => handleFooterClick(e, "#iletisim", "/iletisim")}
+                href=""
+                onClick={(e) =>
+                  handleFooterClick(e, "#iletisim", "/iletisim")
+                }
               >
                 İletişim Maili
               </a>
             </li>
             <li>
               <a
-                href="#sss"
+                href=""
                 onClick={(e) => handleFooterClick(e, "#sss", "/iletisim")}
               >
                 SSS
@@ -149,9 +166,10 @@ function Footer() {
             </li>
             <li>
               <a
-                href="/terms"
+                href=""
                 onClick={(e) => {
                   e.preventDefault();
+                  setClickCount(0);
                   navigate("/terms");
                   window.scrollTo(0, 0);
                 }}
@@ -161,9 +179,10 @@ function Footer() {
             </li>
             <li>
               <a
-                href="/privacy"
+                href=""
                 onClick={(e) => {
                   e.preventDefault();
+                  setClickCount(0);
                   navigate("/privacy");
                   window.scrollTo(0, 0);
                 }}
@@ -175,10 +194,11 @@ function Footer() {
         </div>
       </div>
 
+      {/* --- FOOTER BOTTOM (Sadece Easter Egg) --- */}
       <div
         className="footer-bottom"
         style={{ cursor: "pointer" }}
-        onClick={handleFooterClick}
+        onClick={handleEasterEgg}
       >
         © {new Date().getFullYear()}{" "}
         <a
@@ -190,7 +210,6 @@ function Footer() {
         </a>
         . All Rights Reserved.
       </div>
-
     </footer>
   );
 }

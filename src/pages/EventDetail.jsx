@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"; // useNavigate'i EKLE
 import { fetchEventDetail } from "../services/api";
-import "./EventDetail.css"; // Yeni CSS dosyasını EKLE
-
+import "./EventDetail.css"; 
+import siteLogo from "../assets/logo.png";
 function EventDetail() {
     const { id } = useParams();
     const [event, setEvent] = useState(null);
@@ -42,7 +42,7 @@ function EventDetail() {
             </button>
 
             {/* Resim (Önce görsellik, sonra bilgi) */}
-            {event.image && (
+            {event.image ? (
                 <div className="event-image-wrapper">
                     <img
                         src={event.image}
@@ -50,7 +50,16 @@ function EventDetail() {
                         className="event-image"
                     />
                 </div>
+            ) : (
+                <div className="event-image-wrapper">
+                    <img
+                        src={siteLogo}
+                        alt="Default"
+                        className="event-image"
+                    />
+                </div>
             )}
+
 
             {/* Başlık ve Ana Bilgiler */}
             <div className="event-header">

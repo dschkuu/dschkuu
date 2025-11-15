@@ -118,7 +118,7 @@ function Navbar() {
               <strong style={{ color: "#ffcc00" }}>dschkuu@gmail.com</strong>{" "}
               adresine gönderin.
             </p>
-            <p className="small-text">(İlk 5 kişi içindir.)</p>
+            <p className="small-text">(İstenen bilgileri gönderen ilk 5 kişi için geçerlidir.)</p>
             <img src={catImg} alt="Cat" className="promo-img-bottom" />
           </div>
         </div>

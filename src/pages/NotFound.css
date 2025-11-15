@@ -1,13 +1,19 @@
 .notfound-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  justify-content: center; /* Yatay ortalama için kalsın */
+  /* height: 100vh; Bu satırı kaldırın veya değiştirin */
+  /* align-items: center; Bu satırı kaldırın */
+  
+  /* Kartı navbarın hemen altından başlatmak için bir üst/alt boşluk (padding/margin) ekleyin */
+  padding-top: 50px; /* Örneğin 50px boşluk */
+  padding-bottom: 50px; /* Alttan da boşluk ekleyin */
+  
   background: #ffffff;
   color: #1e293b;
   font-family: "Inter", sans-serif;
   text-align: center;
-  padding: 10px;
+  padding-left: 10px; /* Mevcut padding'i koruyun */
+  padding-right: 10px;
 }
 
 .notfound-card {

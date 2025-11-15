@@ -35,6 +35,7 @@ function ArsivPage() {
             {entry.photo && (
               <img src={entry.photo} alt={entry.name} className="arsiv-photo" />
             )}
+
             <h2>{entry.name}</h2>
             <p className="arsiv-year">{entry.year}</p>
             <div

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"; // useNavigate'i EKLE
 import { fetchBlogDetail } from "../services/api";
 import "./BlogDetail.css";
-
+import siteLogo from "../assets/logo.png";
 function BlogDetail() {
     const { id } = useParams();
     const [blog, setBlog] = useState(null);
@@ -46,7 +46,7 @@ function BlogDetail() {
             <h1 className="detail-title">{blog.title}</h1>
 
             {/* 3. Resim */}
-            {blog.image && (
+            {blog.image ? (
                 <div className="detail-image-wrapper">
                     <img
                         src={blog.image}
@@ -54,7 +54,16 @@ function BlogDetail() {
                         className="detail-image"
                     />
                 </div>
+            ) : (
+                <div className="detail-image-wrapper">
+                    <img
+                        src={siteLogo}
+                        alt="Default"
+                        className="detail-image"
+                    />
+                </div>
             )}
+
 
             {/* 4. İçerik */}
             <div className="detail-content">
