@@ -32,6 +32,35 @@ function AppContent() {
     };
   }, []);
 
+  // 🔹 Light mode'u zorla - Dark mode'u engelle
+  useEffect(() => {
+    // HTML ve body'ye light mode zorla
+    const html = document.documentElement;
+    const body = document.body;
+    
+    html.style.colorScheme = 'light';
+    html.style.backgroundColor = '#ffffff';
+    body.style.backgroundColor = '#ffffff';
+    body.style.color = '#213547';
+    
+    // Meta tag ekle veya güncelle
+    let metaColorScheme = document.querySelector('meta[name="color-scheme"]');
+    if (!metaColorScheme) {
+      metaColorScheme = document.createElement('meta');
+      metaColorScheme.name = 'color-scheme';
+      document.head.appendChild(metaColorScheme);
+    }
+    metaColorScheme.content = 'light only';
+    
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!metaThemeColor) {
+      metaThemeColor = document.createElement('meta');
+      metaThemeColor.name = 'theme-color';
+      document.head.appendChild(metaThemeColor);
+    }
+    metaThemeColor.content = '#ffffff';
+  }, []);
+
   return (
     <>
       <Navbar />

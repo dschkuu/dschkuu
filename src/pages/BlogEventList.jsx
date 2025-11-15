@@ -49,8 +49,8 @@ function BlogEventList() {
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
   const handleClick = (item) => {
-    if (item.type === "blog") navigate(`/blog/${item.id}`);
-    else navigate(`/event/${item.id}`);
+    if (item.type === "blog") navigate(`/bloglar/${item.id}`);
+    else navigate(`/etkinlikler/${item.id}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

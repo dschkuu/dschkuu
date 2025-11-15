@@ -1,12 +1,18 @@
+/* Her zaman light mode zorla */
+html {
+  color-scheme: light only !important;
+  background-color: #ffffff !important;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   /* Her zaman light mode */
-  color-scheme: light;
-  color: #213547;
-  background-color: #ffffff;
+  color-scheme: light only !important;
+  color: #213547 !important;
+  background-color: #ffffff !important;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,8 +36,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   display: block;
-  background-color: #ffffff; /* Her zaman beyaz */
-  color: #213547; /* Her zaman koyu metin */
+  background-color: #ffffff !important; /* Her zaman beyaz */
+  color: #213547 !important; /* Her zaman koyu metin */
 }
 
 h1 {
@@ -62,21 +68,30 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Dark mode media query'sini tamamen kaldırdık veya override ediyoruz */
+/* Dark mode'u tamamen devre dışı bırak */
 @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: light only !important;
+    background-color: #ffffff !important;
+  }
+
   :root {
-    color-scheme: light; /* Dark mode'u override et */
-    color: #213547;
-    background-color: #ffffff;
+    color-scheme: light only !important;
+    color: #213547 !important;
+    background-color: #ffffff !important;
   }
 
   body {
-    background-color: #ffffff;
-    color: #213547;
+    background-color: #ffffff !important;
+    color: #213547 !important;
   }
 
   button {
-    background-color: #f9f9f9;
-    color: #213547;
+    background-color: #f9f9f9 !important;
+    color: #213547 !important;
+  }
+
+  * {
+    color-scheme: light only !important;
   }
 }

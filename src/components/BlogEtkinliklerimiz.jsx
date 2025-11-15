@@ -35,8 +35,8 @@ function BlogEtkinliklerimiz() {
   }, []);
 
   const handleClick = (item) => {
-    if (item.type === "blog") navigate(`/blog/${item.id}`);
-    else navigate(`/event/${item.id}`);
+    if (item.type === "blog") navigate(`/bloglar/${item.id}`);
+    else navigate(`/etkinlikler/${item.id}`);
 
     // Sayfa değiştikten hemen sonra en üste kaydır
     window.scrollTo({ top: 0, behavior: "smooth" });

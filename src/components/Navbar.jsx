@@ -19,9 +19,9 @@ function Navbar() {
     if (!section) return;
     
     const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-    // offsetTop kullanarak sayfanın başından itibaren gerçek pozisyonu al
+    // Başlık navbar'ın hemen altında olsun (20px boşluk)
     const elementPosition = section.offsetTop;
-    const offsetPosition = elementPosition - navbarHeight - 10;
+    const offsetPosition = elementPosition - navbarHeight + 20;
 
     window.scrollTo({ 
       top: offsetPosition, 
