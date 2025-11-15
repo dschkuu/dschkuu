@@ -17,19 +17,22 @@ function Navbar() {
   const scrollToSection = (sectionId) => {
     const section = document.querySelector(sectionId);
     if (!section) return;
+    
     const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-    const y =
-      section.getBoundingClientRect().top +
-      window.pageYOffset -
-      navbarHeight +
-      10;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    // offsetTop kullanarak sayfanın başından itibaren gerçek pozisyonu al
+    const elementPosition = section.offsetTop;
+    const offsetPosition = elementPosition - navbarHeight - 10;
+
+    window.scrollTo({ 
+      top: offsetPosition, 
+      behavior: "smooth" 
+    });
   };
 
   const handleSectionNavigation = (sectionId) => {
     setMenuOpen(false);
     if (location.pathname === "/") {
-      scrollToSection(sectionId);
+      setTimeout(() => scrollToSection(sectionId), 100);
     } else {
       navigate("/", { state: { scrollTo: sectionId } });
     }
@@ -41,13 +44,13 @@ function Navbar() {
       setTimeout(() => {
         scrollToSection(sectionId);
         window.history.replaceState({}, document.title);
-      }, 100);
+      }, 500);
     }
   }, [location]);
 
   const goToBlogEventsPage = () => {
     setMenuOpen(false);
-    navigate("/blog-events");
+    navigate("/blog-etkinlik");
     window.scrollTo(0, 0);
   };
 
@@ -99,7 +102,6 @@ function Navbar() {
         </div>
       </nav>
 
-      
       {showPromoOverlay && (
         <div className="promo-layer">
           <div className="promo-box">
@@ -114,7 +116,7 @@ function Navbar() {
             <p>
               Bizden 1 Adet Poşet Çay Kazandınız! <br />
               Ödülünüzü almak için lütfen <br />
-              <strong>“JBHVHG”</strong> kodunu ve bu sayfanın ekran görüntüsünü <br />
+              <strong>"JBHVHG"</strong> kodunu ve bu sayfanın ekran görüntüsünü <br />
               <strong style={{ color: "#ffcc00" }}>dschkuu@gmail.com</strong>{" "}
               adresine gönderin.
             </p>

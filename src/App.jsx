@@ -38,13 +38,13 @@ function AppContent() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/blog/:id" element={<BlogDetail />} />
-        <Route path="/event/:id" element={<EventDetail />} />
-        <Route path="/blog-events" element={<BlogEventList />} />
-        <Route path="/sponsors" element={<SponsorPage />} />
+        <Route path="/bloglar/:id" element={<BlogDetail />} />
+        <Route path="/etkinlikler/:id" element={<EventDetail />} />
+        <Route path="/blog-etkinlik" element={<BlogEventList />} />
+        <Route path="/sponsorlar" element={<SponsorPage />} />
         <Route path="/iletisim" element={<IletisimPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/kullanim-sartlari" element={<TermsPage />} />
+        <Route path="/gizlilik-guvenlik" element={<PrivacyPage />} />
         <Route path="/hakkimizda" element={<HakkimizdaPage />} />
         <Route path="/arsiv" element={<ArsivPage />} />
         <Route path="*" element={<NotFound />} />

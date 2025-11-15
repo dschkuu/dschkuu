@@ -11,12 +11,14 @@ function Footer() {
     const section = document.querySelector(sectionId);
     if (section) {
       const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-      const y =
-        section.getBoundingClientRect().top +
-        window.pageYOffset -
-        navbarHeight;
+      // offsetTop kullanarak sayfanın başından itibaren gerçek pozisyonu al
+      const elementPosition = section.offsetTop;
+      const offsetPosition = elementPosition - navbarHeight - 10;
 
-      window.scrollTo({ top: y, behavior: "smooth" });
+      window.scrollTo({ 
+        top: offsetPosition, 
+        behavior: "smooth" 
+      });
     }
   };
 
@@ -28,7 +30,7 @@ function Footer() {
     if (targetPage && location.pathname !== targetPage) {
       navigate(targetPage, { state: { scrollTo: sectionId } });
     } else {
-      scrollToSection(sectionId);
+      setTimeout(() => scrollToSection(sectionId), 100);
     }
   };
 
@@ -48,14 +50,14 @@ function Footer() {
   useEffect(() => {
     if (location.state?.scrollTo) {
       const sectionId = location.state.scrollTo;
-      setTimeout(() => scrollToSection(sectionId), 300);
+      setTimeout(() => scrollToSection(sectionId), 500);
     }
   }, [location]);
 
   const goToBlogEventsPage = (e) => {
     e.preventDefault();
     setClickCount(0);
-    navigate("/blog-events");
+    navigate("/blog-etkinlik");
     window.scrollTo(0, 0);
   };
 
@@ -170,7 +172,7 @@ function Footer() {
                 onClick={(e) => {
                   e.preventDefault();
                   setClickCount(0);
-                  navigate("/terms");
+                  navigate("/kullanim-sartlari");
                   window.scrollTo(0, 0);
                 }}
               >
@@ -183,7 +185,7 @@ function Footer() {
                 onClick={(e) => {
                   e.preventDefault();
                   setClickCount(0);
-                  navigate("/privacy");
+                  navigate("/gizlilik-guvenlik");
                   window.scrollTo(0, 0);
                 }}
               >

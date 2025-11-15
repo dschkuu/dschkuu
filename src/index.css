@@ -3,9 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Her zaman light mode */
+  color-scheme: light;
+  color: #213547;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,12 +30,14 @@ body {
   min-width: 320px;
   min-height: 100vh;
   display: block;
-  /* flex yerine block */
+  background-color: #ffffff; /* Her zaman beyaz */
+  color: #213547; /* Her zaman koyu metin */
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #213547; /* Başlıklar da koyu */
 }
 
 button {
@@ -44,7 +47,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f9f9f9;
+  color: #213547;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -58,17 +62,21 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* Dark mode media query'sini tamamen kaldırdık veya override ediyoruz */
+@media (prefers-color-scheme: dark) {
   :root {
+    color-scheme: light; /* Dark mode'u override et */
     color: #213547;
     background-color: #ffffff;
   }
 
-  a:hover {
-    color: #747bff;
+  body {
+    background-color: #ffffff;
+    color: #213547;
   }
 
   button {
     background-color: #f9f9f9;
+    color: #213547;
   }
 }

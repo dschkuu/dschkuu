@@ -6,7 +6,7 @@ const API_BASE_URL = `${BASE_URL}/api`;
 // Blogları çek
 export const fetchBlogs = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/blog/`);
+    const response = await axios.get(`${API_BASE_URL}/bloglar/`);
     // Görsellerin tam URL’sini oluştur
     return response.data.map((blog) => ({
       ...blog,
@@ -21,7 +21,7 @@ export const fetchBlogs = async () => {
 // Etkinlikleri çek
 export const fetchEvents = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/events/`);
+    const response = await axios.get(`${API_BASE_URL}/etkinlikler/`);
     return response.data.map((event) => ({
       ...event,
       image: event.image || null,
@@ -35,7 +35,7 @@ export const fetchEvents = async () => {
 // Tek bir blog detayını çek
 export const fetchBlogDetail = async (id) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/blog/${id}/`);
+    const response = await axios.get(`${API_BASE_URL}/bloglar/${id}/`);
     const data = response.data;
     return {
       ...data,
@@ -50,7 +50,7 @@ export const fetchBlogDetail = async (id) => {
 // Tek bir etkinlik detayını çek
 export const fetchEventDetail = async (id) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/events/${id}/`);
+    const response = await axios.get(`${API_BASE_URL}/etkinlikler/${id}/`);
     const data = response.data;
     return {
       ...data,
@@ -65,7 +65,7 @@ export const fetchEventDetail = async (id) => {
 // Ayarları çek (join link için)
 export const fetchSettings = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/home/settings/`);
+    const response = await axios.get(`${API_BASE_URL}/anasayfa/settings/`);
     return response.data;
   } catch (error) {
     console.error("Error fetching settings:", error);
@@ -76,7 +76,7 @@ export const fetchSettings = async () => {
 // 🔹 Sponsorları çek
 export const fetchSponsors = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/sponsors/`);
+    const response = await axios.get(`${API_BASE_URL}/sponsorlar/`);
     return response.data.map((sponsor) => ({
       ...sponsor,
       image: sponsor.logo || null
@@ -90,7 +90,7 @@ export const fetchSponsors = async () => {
 // Ekip üyelerini çek
 export const fetchTeamMembers = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/team/`);
+    const response = await axios.get(`${API_BASE_URL}/takim/`);
     return response.data.map((member) => ({
       ...member,
       photo: member.photo || null
@@ -104,7 +104,7 @@ export const fetchTeamMembers = async () => {
 // Arşiv girişlerini çek
 export const fetchArsivEntries = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/home/`);
+    const response = await axios.get(`${API_BASE_URL}/anasayfa/`);
     return response.data.map((entry) => ({
       ...entry,
       photo: entry.photo ? entry.photo : null, // backend full URL veriyor

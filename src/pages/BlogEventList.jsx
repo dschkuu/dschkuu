@@ -89,7 +89,7 @@ function BlogEventList() {
             <div
               className="blog-preview"
               dangerouslySetInnerHTML={{
-                __html: truncateHTML(item.content, 250),
+                __html: truncateHTML(item.content, 350),
               }}
             />
             <div className="blog-event-footer">

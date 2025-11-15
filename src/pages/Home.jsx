@@ -6,10 +6,11 @@ import BlogEtkinliklerimiz from "../components/BlogEtkinliklerimiz";
 import Sponsorlar from "../components/Sponsorlar";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import "./Home.css"; // ✅ CSS import
+import "./Home.css";
 
 function Home() {
   const [joinLink, setJoinLink] = useState("#");
+  const [contentLoaded, setContentLoaded] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -19,23 +20,37 @@ function Home() {
     });
   }, []);
 
+  // İçerik yüklendiğinde flag'i set et
   useEffect(() => {
-    if (location.state?.scrollTo) {
-      const timer = setTimeout(() => {
+    setContentLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (location.state?.scrollTo && contentLoaded) {
+      // Birden fazla deneme yap
+      let attempts = 0;
+      const maxAttempts = 10;
+      
+      const tryScroll = () => {
         const section = document.querySelector(location.state.scrollTo);
         if (section) {
           const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-          const y = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+          const y = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight + 10;
           window.scrollTo({ top: y, behavior: "smooth" });
+          navigate(location.pathname, { replace: true, state: {} });
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(tryScroll, 100);
         }
-        navigate(location.pathname, { replace: true, state: {} });
-      }, 100);
-      return () => clearTimeout(timer);
+      };
+
+      // İlk denemeyi biraz geciktir
+      setTimeout(tryScroll, 100);
     }
-  }, [location, navigate]);
+  }, [location, navigate, contentLoaded]);
 
   const goToBlogEvents = () => {
-    navigate("/blog-events");
+    navigate("/blog-etkinlik");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

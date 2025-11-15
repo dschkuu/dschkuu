@@ -11,7 +11,7 @@
   flex: 1;
   min-height: 90vh;
   box-sizing: border-box;
-  background-color: white; /* Telefonlarda siyah arka planı önler */
+  background-color: white;
 }
 
 /* Sol görsel */
@@ -63,10 +63,11 @@
   border-radius: 8px;
   font-weight: 500;
   text-align: center;
-  flex: 1 1 150px;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
+  flex: 0 0 auto; /* Butonlar sadece içeriklerine göre boyutlanır */
+  white-space: nowrap; /* Metin tek satırda kalır */
 }
 
 .home-main .hero-text .buttons a {
@@ -89,24 +90,73 @@
   background-color: #f0f0f0;
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
+/* Tablet responsive */
+@media (max-width: 1024px) {
   .home-main {
-    padding: 40px 20px;
-    flex-direction: column;
-    min-height: auto;
+    padding: 60px 40px;
   }
 
   .home-main .hero-text h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+}
+/* Mobile responsive için güncellenmiş kod */
+@media (max-width: 768px) {
+    .home-main {
+        padding: 40px 20px;
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    /* Metin alanının ve içeriğinin ortalanması */
+    .home-main .hero-text {
+        align-items: center; /* H1, H2 ve Buttons'ı ortalar */
+        text-align: center; /* Metinleri (H1, H2) ortalar */
+    }
+
+    .home-main .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .home-main .hero-text h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Butonları içeren kapsayıcı (buttons) */
+    .home-main .hero-text .buttons {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%; /* Kapsayıcının tam genişlik olması */
+        align-items: center; /* Butonları yatayda ortalar */
+        justify-content: center;
+    }
+
+    /* Butonların kendisi: Aynı genişlik ve ortalanma için */
+    .home-main .hero-text .buttons a,
+    .home-main .hero-text .buttons button {
+        width: 100%; /* Kapsayıcı genişliğinin (yukarıda %100 yaptık) tam genişliğini alır */
+        max-width: 300px; /* Belirli bir maksimum genişlik vererek butonu çok büyük ekranlarda bile kontrol altında tutarız, burayı isteğinize göre ayarlayabilirsiniz */
+        flex: 1 1 auto; /* Esnekliği korur */
+        box-sizing: border-box; /* Padding'in genişliğe dahil olmasını sağlar */
+        /* text-align: center; // Zaten varsayılan olarak ortada olmalı, gerekirse eklenebilir. */
+    }
+}
+
+/* Çok küçük ekranlar */
+@media (max-width: 480px) {
+  .home-main {
+    padding: 30px 15px;
+  }
+
+  .home-main .hero-text h1 {
+    font-size: 1.75rem;
   }
 
   .home-main .hero-text h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
-  .home-main .hero-text .buttons {
-    flex-direction: column;
-    gap: 15px;
+  .home-main .hero-image {
+    min-width: 250px;
   }
 }
