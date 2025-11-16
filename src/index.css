@@ -1,7 +1,8 @@
-/* Her zaman light mode zorla */
+/* Her zaman light mode zorla - EN ÜST SEVİYE */
 html {
   color-scheme: light only !important;
   background-color: #ffffff !important;
+  filter: none !important;
 }
 
 :root {
@@ -9,7 +10,7 @@ html {
   line-height: 1.5;
   font-weight: 400;
 
-  /* Her zaman light mode */
+  /* Light mode zorla */
   color-scheme: light only !important;
   color: #213547 !important;
   background-color: #ffffff !important;
@@ -36,14 +37,15 @@ body {
   min-width: 320px;
   min-height: 100vh;
   display: block;
-  background-color: #ffffff !important; /* Her zaman beyaz */
-  color: #213547 !important; /* Her zaman koyu metin */
+  background-color: #ffffff !important;
+  color: #213547 !important;
+  color-scheme: light only !important;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  color: #213547; /* Başlıklar da koyu */
+  color: #213547 !important;
 }
 
 button {
@@ -73,6 +75,7 @@ button:focus-visible {
   html {
     color-scheme: light only !important;
     background-color: #ffffff !important;
+    filter: none !important;
   }
 
   :root {
@@ -84,6 +87,7 @@ button:focus-visible {
   body {
     background-color: #ffffff !important;
     color: #213547 !important;
+    color-scheme: light only !important;
   }
 
   button {
@@ -91,7 +95,28 @@ button:focus-visible {
     color: #213547 !important;
   }
 
+  /* Tüm elemanlar için */
   * {
+    color-scheme: light only !important;
+  }
+  
+  /* Tarayıcı filtresini engelle */
+  html, body, #root {
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+}
+
+/* WebKit/Blink tarayıcılar için ek güvenlik */
+@supports (-webkit-appearance: none) {
+  html {
+    color-scheme: light only !important;
+  }
+}
+
+/* Firefox için ek güvenlik */
+@supports (-moz-appearance: none) {
+  html {
     color-scheme: light only !important;
   }
 }

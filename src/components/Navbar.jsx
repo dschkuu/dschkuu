@@ -15,18 +15,27 @@ function Navbar() {
   const location = useLocation();
 
   const scrollToSection = (sectionId) => {
-    const section = document.querySelector(sectionId);
-    if (!section) return;
+    let attempts = 0;
+    const maxAttempts = 20;
     
-    const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-    // Başlık navbar'ın hemen altında olsun (20px boşluk)
-    const elementPosition = section.offsetTop;
-    const offsetPosition = elementPosition - navbarHeight + 20;
+    const tryScroll = () => {
+      const section = document.querySelector(sectionId);
+      if (section) {
+        const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
+        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight - 20;
 
-    window.scrollTo({ 
-      top: offsetPosition, 
-      behavior: "smooth" 
-    });
+        window.scrollTo({ 
+          top: offsetPosition, 
+          behavior: "smooth" 
+        });
+      } else if (attempts < maxAttempts) {
+        attempts++;
+        setTimeout(tryScroll, 150);
+      }
+    };
+    
+    tryScroll();
   };
 
   const handleSectionNavigation = (sectionId) => {
@@ -44,7 +53,7 @@ function Navbar() {
       setTimeout(() => {
         scrollToSection(sectionId);
         window.history.replaceState({}, document.title);
-      }, 500);
+      }, 1000);
     }
   }, [location]);
 
@@ -60,10 +69,12 @@ function Navbar() {
     window.scrollTo(0, 0);
   };
 
-  // 🔹 Gizli tıklama sayacı
   const handleLogoClick = () => {
     if (location.pathname !== "/") {
       navigate("/");
+      window.scrollTo(0, 0);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
     const newCount = clickCount + 1;
     setClickCount(newCount);

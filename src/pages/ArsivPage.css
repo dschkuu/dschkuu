@@ -1,7 +1,29 @@
 .arsiv-container {
-  max-width: 1000px; /* eski 800px yerine biraz daha geniş */
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 1.5rem; /* biraz daha az padding */
+  padding: 0 1.5rem 1.5rem 1.5rem; /* Üst padding'i kaldırdık */
+  padding-top: calc(80px + 1rem); /* Navbar yüksekliği + minimal boşluk */
+}
+
+.arsiv-title {
+  margin: 0 0 1.5rem 0; /* Üst margin'i kaldırdık */
+  padding: 0;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.arsiv-loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.arsiv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .arsiv-item {
@@ -16,9 +38,22 @@
   text-align: center;
 }
 
+.arsiv-item h2 {
+  margin: 0.5rem 0;
+  font-size: 1.8rem;
+  color: #222;
+}
+
+.arsiv-year {
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 600;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
 .arsiv-photo {
   width: 100%;
-  max-width: 800px; /* fotoğraf daha geniş gösterilsin */
+  max-width: 800px;
   height: auto;
   object-fit: cover;
   border-radius: 6px;
@@ -30,8 +65,24 @@
   white-space: normal;
   margin: 0;
   line-height: 1.5;
+  width: 100%;
 }
 
 .arsiv-description p {
   margin: 0.5rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .arsiv-container {
+    padding-top: calc(70px + 1rem); /* Mobilde navbar biraz daha küçük */
+  }
+  
+  .arsiv-title {
+    font-size: 2rem;
+  }
+  
+  .arsiv-item h2 {
+    font-size: 1.5rem;
+  }
 }

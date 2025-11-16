@@ -15,20 +15,17 @@ function ArsivPage() {
     getEntries();
   }, []);
 
-  if (loading) return <p>Yükleniyor...</p>;
-  if (!entries.length) return <p>Arşiv verisi bulunamadı.</p>;
+  useEffect(() => {
+    // Sayfa yüklendiğinde navbar'ın hemen altına scroll yap
+    window.scrollTo(0, 0);
+  }, []);
 
-  const truncateHTML = (html, maxLength = 250) => {
-    if (!html) return "";
-    const div = document.createElement("div");
-    div.innerHTML = html;
-    let text = div.textContent || div.innerText || "";
-    return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
-  };
+  if (loading) return <p className="arsiv-loading">Yükleniyor...</p>;
+  if (!entries.length) return <p className="arsiv-loading">Arşiv verisi bulunamadı.</p>;
 
   return (
     <div className="arsiv-container">
-      <h1>Arşiv</h1>
+      <h1 className="arsiv-title">Arşiv</h1>
       <div className="arsiv-list">
         {entries.map((entry) => (
           <div key={entry.id} className="arsiv-item">

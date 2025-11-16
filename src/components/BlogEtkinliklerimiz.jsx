@@ -4,41 +4,52 @@ import { fetchBlogs, fetchEvents } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import siteLogo from "../assets/logo.png";
 
-function BlogEtkinliklerimiz() {
+function BlogEtkinliklerimiz({ onDataLoaded }) {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
-      const blogs = await fetchBlogs();
-      const events = await fetchEvents();
+      setLoading(true);
+      try {
+        const blogs = await fetchBlogs();
+        const events = await fetchEvents();
 
-      const combined = [
-        ...blogs.map((b) => ({
-          ...b,
-          type: "blog",
-          date: b.published_date,
-        })),
-        ...events.map((e) => ({
-          ...e,
-          type: "event",
-          date: e.date,
-        })),
-      ]
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .slice(0, 6);
+        const combined = [
+          ...blogs.map((b) => ({
+            ...b,
+            type: "blog",
+            date: b.published_date,
+          })),
+          ...events.map((e) => ({
+            ...e,
+            type: "event",
+            date: e.date,
+          })),
+        ]
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 6);
 
-      setItems(combined);
+        setItems(combined);
+      } catch (error) {
+        console.error("Veri yüklenirken hata oluştu:", error);
+      } finally {
+        setLoading(false);
+        
+        // Veri yüklendikten sonra parent'a bildir
+        if (onDataLoaded) {
+          setTimeout(() => onDataLoaded(), 100);
+        }
+      }
     };
 
     getData();
-  }, []);
+  }, [onDataLoaded]);
 
   const handleClick = (item) => {
     if (item.type === "blog") navigate(`/bloglar/${item.id}`);
     else navigate(`/etkinlikler/${item.id}`);
-
-    // Sayfa değiştikten hemen sonra en üste kaydır
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -47,7 +58,17 @@ function BlogEtkinliklerimiz() {
       <h2 className="blog-title">Blog / Etkinliklerimiz</h2>
 
       <div className="blog-layout">
-        {items.length > 0 ? (
+        {loading ? (
+          <div style={{ 
+            minHeight: "500px", 
+            display: "flex", 
+            alignItems: "center", 
+            justifyContent: "center",
+            width: "100%" 
+          }}>
+            <p>Veriler yükleniyor...</p>
+          </div>
+        ) : items.length > 0 ? (
           <>
             {/* Ana büyük kart */}
             <div className="main-card" onClick={() => handleClick(items[0])}>
@@ -94,7 +115,7 @@ function BlogEtkinliklerimiz() {
             </div>
           </>
         ) : (
-          <p>Veriler yükleniyor...</p>
+          <p>Veri bulunamadı.</p>
         )}
       </div>
     </section>

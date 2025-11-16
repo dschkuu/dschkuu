@@ -8,24 +8,32 @@ function Footer() {
   const [clickCount, setClickCount] = useState(0);
 
   const scrollToSection = (sectionId) => {
-    const section = document.querySelector(sectionId);
-    if (section) {
-      const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-      // Başlık navbar'ın hemen altında olsun (20px boşluk)
-      const elementPosition = section.offsetTop;
-      const offsetPosition = elementPosition - navbarHeight + 20;
+    let attempts = 0;
+    const maxAttempts = 20;
+    
+    const tryScroll = () => {
+      const section = document.querySelector(sectionId);
+      if (section) {
+        const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
+        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight - 20;
 
-      window.scrollTo({ 
-        top: offsetPosition, 
-        behavior: "smooth" 
-      });
-    }
+        window.scrollTo({ 
+          top: offsetPosition, 
+          behavior: "smooth" 
+        });
+      } else if (attempts < maxAttempts) {
+        attempts++;
+        setTimeout(tryScroll, 150);
+      }
+    };
+    
+    tryScroll();
   };
 
-  // --- Footer linkleri için: sadece scroll/navigate yap, Easter egg yok ---
   const handleFooterClick = (e, sectionId = null, targetPage = null) => {
     e.preventDefault();
-    setClickCount(0); // Her link tıklanınca reset
+    setClickCount(0);
 
     if (targetPage && location.pathname !== targetPage) {
       navigate(targetPage, { state: { scrollTo: sectionId } });
@@ -34,7 +42,6 @@ function Footer() {
     }
   };
 
-  // --- Easter egg sadece footer-bottom için çalışacak ---
   const handleEasterEgg = () => {
     setClickCount((prev) => {
       const newVal = prev + 1;
@@ -46,11 +53,13 @@ function Footer() {
     });
   };
 
-  // Sayfa değişiminde scroll yapılacaksa uygula
   useEffect(() => {
     if (location.state?.scrollTo) {
       const sectionId = location.state.scrollTo;
-      setTimeout(() => scrollToSection(sectionId), 500);
+      setTimeout(() => {
+        scrollToSection(sectionId);
+        window.history.replaceState({}, document.title);
+      }, 1000);
     }
   }, [location]);
 

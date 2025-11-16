@@ -25,40 +25,76 @@ function ScrollToTop() {
 }
 
 function AppContent() {
-  // 🔹 Sayfa yenilendiğinde (F5 veya Ctrl+R) de en üste gitmesi için
+  // Sayfa yenilendiğinde en üste git
   useEffect(() => {
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
     };
   }, []);
 
-  // 🔹 Light mode'u zorla - Dark mode'u engelle
+  // Light mode'u zorla - GÜÇLÜ VERSİYON
   useEffect(() => {
-    // HTML ve body'ye light mode zorla
-    const html = document.documentElement;
-    const body = document.body;
+    const forceLightMode = () => {
+      const html = document.documentElement;
+      const body = document.body;
+      const root = document.getElementById('root');
+      
+      // Style zorla
+      html.style.colorScheme = 'light';
+      html.style.backgroundColor = '#ffffff';
+      html.style.color = '#213547';
+      html.style.filter = 'none';
+      
+      body.style.colorScheme = 'light';
+      body.style.backgroundColor = '#ffffff';
+      body.style.color = '#213547';
+      body.style.filter = 'none';
+      
+      if (root) {
+        root.style.backgroundColor = '#ffffff';
+        root.style.color = '#213547';
+        root.style.filter = 'none';
+      }
+      
+      // Meta tagları güncelle/ekle
+      const updateOrCreateMeta = (name, content) => {
+        let meta = document.querySelector(`meta[name="${name}"]`);
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.name = name;
+          document.head.appendChild(meta);
+        }
+        meta.content = content;
+      };
+      
+      updateOrCreateMeta('color-scheme', 'light only');
+      updateOrCreateMeta('theme-color', '#ffffff');
+      updateOrCreateMeta('supported-color-schemes', 'light');
+    };
+
+    // İlk yüklemede
+    forceLightMode();
     
-    html.style.colorScheme = 'light';
-    html.style.backgroundColor = '#ffffff';
-    body.style.backgroundColor = '#ffffff';
-    body.style.color = '#213547';
+    // Periyodik kontrol (bazı tarayıcılar geç yükleme yapar)
+    const interval = setInterval(forceLightMode, 1000);
     
-    // Meta tag ekle veya güncelle
-    let metaColorScheme = document.querySelector('meta[name="color-scheme"]');
-    if (!metaColorScheme) {
-      metaColorScheme = document.createElement('meta');
-      metaColorScheme.name = 'color-scheme';
-      document.head.appendChild(metaColorScheme);
-    }
-    metaColorScheme.content = 'light only';
+    // 10 saniye sonra interval'i temizle
+    setTimeout(() => clearInterval(interval), 10000);
     
-    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (!metaThemeColor) {
-      metaThemeColor = document.createElement('meta');
-      metaThemeColor.name = 'theme-color';
-      document.head.appendChild(metaThemeColor);
-    }
-    metaThemeColor.content = '#ffffff';
+    // MutationObserver ile değişiklikleri izle
+    const observer = new MutationObserver(() => {
+      forceLightMode();
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['style', 'class']
+    });
+
+    return () => {
+      clearInterval(interval);
+      observer.disconnect();
+    };
   }, []);
 
   return (

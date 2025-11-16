@@ -18,6 +18,9 @@
 .home-main .hero-image {
   flex: 1 1 45%;
   min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-main .hero-image img {
@@ -66,8 +69,8 @@
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
-  flex: 0 0 auto; /* Butonlar sadece içeriklerine göre boyutlanır */
-  white-space: nowrap; /* Metin tek satırda kalır */
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .home-main .hero-text .buttons a {
@@ -90,62 +93,126 @@
   background-color: #f0f0f0;
 }
 
-/* Tablet responsive */
-@media (max-width: 1024px) {
+/* iPad Pro ve büyük tabletler (1024px - 1366px) */
+@media (min-width: 1025px) and (max-width: 1366px) {
   .home-main {
-    padding: 60px 40px;
+    padding: 60px 50px;
+    gap: 40px;
+    min-height: 85vh;
+  }
+
+  .home-main .hero-image {
+    flex: 1 1 48%;
+  }
+
+  .home-main .hero-text {
+    flex: 1 1 48%;
+  }
+
+  .home-main .hero-image img {
+    max-height: 480px;
+  }
+
+  .home-main .hero-text h1 {
+    font-size: 2.8rem;
+  }
+
+  .home-main .hero-text h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Standart tablet (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .home-main {
+    padding: 50px 40px;
+    gap: 35px;
+    min-height: 80vh;
+  }
+
+  .home-main .hero-image {
+    flex: 1 1 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .home-main .hero-text {
+    flex: 1 1 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .home-main .hero-image img {
+    max-height: 400px;
   }
 
   .home-main .hero-text h1 {
     font-size: 2.5rem;
   }
+
+  .home-main .hero-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .home-main .hero-text .buttons {
+    justify-content: center;
+  }
 }
-/* Mobile responsive için güncellenmiş kod */
+
+/* Mobile responsive (768px ve altı) */
 @media (max-width: 768px) {
-    .home-main {
-        padding: 40px 20px;
-        flex-direction: column;
-        min-height: auto;
-    }
+  .home-main {
+    padding: 40px 20px;
+    flex-direction: column;
+    min-height: auto;
+    gap: 30px;
+  }
 
-    /* Metin alanının ve içeriğinin ortalanması */
-    .home-main .hero-text {
-        align-items: center; /* H1, H2 ve Buttons'ı ortalar */
-        text-align: center; /* Metinleri (H1, H2) ortalar */
-    }
+  .home-main .hero-image {
+    order: 1;
+    width: 100%;
+  }
 
-    .home-main .hero-text h1 {
-        font-size: 2rem;
-    }
+  .home-main .hero-image img {
+    max-height: 350px;
+  }
 
-    .home-main .hero-text h2 {
-        font-size: 1.2rem;
-    }
+  .home-main .hero-text {
+    order: 2;
+    align-items: center;
+    text-align: center;
+  }
 
-    /* Butonları içeren kapsayıcı (buttons) */
-    .home-main .hero-text .buttons {
-        flex-direction: column;
-        gap: 15px;
-        width: 100%; /* Kapsayıcının tam genişlik olması */
-        align-items: center; /* Butonları yatayda ortalar */
-        justify-content: center;
-    }
+  .home-main .hero-text h1 {
+    font-size: 2rem;
+  }
 
-    /* Butonların kendisi: Aynı genişlik ve ortalanma için */
-    .home-main .hero-text .buttons a,
-    .home-main .hero-text .buttons button {
-        width: 100%; /* Kapsayıcı genişliğinin (yukarıda %100 yaptık) tam genişliğini alır */
-        max-width: 300px; /* Belirli bir maksimum genişlik vererek butonu çok büyük ekranlarda bile kontrol altında tutarız, burayı isteğinize göre ayarlayabilirsiniz */
-        flex: 1 1 auto; /* Esnekliği korur */
-        box-sizing: border-box; /* Padding'in genişliğe dahil olmasını sağlar */
-        /* text-align: center; // Zaten varsayılan olarak ortada olmalı, gerekirse eklenebilir. */
-    }
+  .home-main .hero-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .home-main .hero-text .buttons {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-main .hero-text .buttons a,
+  .home-main .hero-text .buttons button {
+    width: 100%;
+    max-width: 300px;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+  }
 }
 
-/* Çok küçük ekranlar */
+/* Çok küçük ekranlar (480px ve altı) */
 @media (max-width: 480px) {
   .home-main {
     padding: 30px 15px;
+    gap: 25px;
   }
 
   .home-main .hero-text h1 {
@@ -158,5 +225,15 @@
 
   .home-main .hero-image {
     min-width: 250px;
+  }
+
+  .home-main .hero-image img {
+    max-height: 300px;
+  }
+
+  .home-main .hero-text .buttons a,
+  .home-main .hero-text .buttons button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
   }
 }

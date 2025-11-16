@@ -25,7 +25,7 @@ function Sponsorlar() {
     getSponsors();
   }, []);
 
-  const handleClick = () => navigate("/sponsors");
+  const handleClick = () => navigate("/sponsorlar");
 
   if (loading) return <p style={{ padding: "20px" }}>Sponsorlar yükleniyor...</p>;
   if (error) return <p style={{ padding: "20px", color: "red" }}>{error}</p>;

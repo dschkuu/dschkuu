@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Resim1 from "../assets/resim1.png";
 import { fetchSettings } from "../services/api";
 import AboutSection from "../components/Hakkimizda";
@@ -10,7 +10,7 @@ import "./Home.css";
 
 function Home() {
   const [joinLink, setJoinLink] = useState("#");
-  const [contentLoaded, setContentLoaded] = useState(false);
+  const [blogDataLoaded, setBlogDataLoaded] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -20,34 +20,25 @@ function Home() {
     });
   }, []);
 
-  // İçerik yüklendiğinde flag'i set et
-  useEffect(() => {
-    setContentLoaded(true);
+  const handleBlogDataLoaded = useCallback(() => {
+    setBlogDataLoaded(true);
   }, []);
 
   useEffect(() => {
-    if (location.state?.scrollTo && contentLoaded) {
-      // Birden fazla deneme yap
-      let attempts = 0;
-      const maxAttempts = 10;
-      
-      const tryScroll = () => {
+    if (location.state?.scrollTo && blogDataLoaded) {
+      const scrollToSection = () => {
         const section = document.querySelector(location.state.scrollTo);
         if (section) {
           const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
-          const y = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight + 10;
+          const y = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
           window.scrollTo({ top: y, behavior: "smooth" });
           navigate(location.pathname, { replace: true, state: {} });
-        } else if (attempts < maxAttempts) {
-          attempts++;
-          setTimeout(tryScroll, 100);
         }
       };
 
-      // İlk denemeyi biraz geciktir
-      setTimeout(tryScroll, 100);
+      setTimeout(scrollToSection, 300);
     }
-  }, [location, navigate, contentLoaded]);
+  }, [location, navigate, blogDataLoaded]);
 
   const goToBlogEvents = () => {
     navigate("/blog-etkinlik");
@@ -80,7 +71,7 @@ function Home() {
       </main>
 
       <AboutSection />
-      <BlogEtkinliklerimiz />
+      <BlogEtkinliklerimiz onDataLoaded={handleBlogDataLoaded} />
       <div id="sponsorlar">
         <Sponsorlar />
       </div>

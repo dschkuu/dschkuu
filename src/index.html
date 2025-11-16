@@ -4,18 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- 🔹 Bu satırları ekleyin -->
+    <!-- Light mode zorla -->
     <meta name="color-scheme" content="light only">
     <meta name="theme-color" content="#ffffff">
+    <meta name="supported-color-schemes" content="light">
     
     <title>DSC Hasan Kalyoncu Üniversitesi</title>
     
-    <!-- 🔹 Bu style bloğunu ekleyin -->
+    <!-- Light mode için kritik stil -->
     <style>
-      html, body {
+      /* Tarayıcı dark mode'unu tamamen engelle */
+      html {
         color-scheme: light only !important;
         background-color: #ffffff !important;
         color: #213547 !important;
+      }
+      
+      body {
+        color-scheme: light only !important;
+        background-color: #ffffff !important;
+        color: #213547 !important;
+      }
+      
+      /* Tüm elemanlar için zorla */
+      * {
+        color-scheme: light only !important;
+      }
+      
+      /* Dark mode media query'sini override et */
+      @media (prefers-color-scheme: dark) {
+        html, body {
+          color-scheme: light only !important;
+          background-color: #ffffff !important;
+          color: #213547 !important;
+          filter: none !important;
+        }
       }
     </style>
   </head>
