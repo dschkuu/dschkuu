@@ -1,16 +1,25 @@
 .arsiv-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 1.5rem 1.5rem 1.5rem; /* Üst padding'i kaldırdık */
-  padding-top: calc(80px + 1rem); /* Navbar yüksekliği + minimal boşluk */
+  padding: 20px 80px 60px 80px;
+  background-color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .arsiv-title {
-  margin: 0 0 1.5rem 0; /* Üst margin'i kaldırdık */
-  padding: 0;
-  text-align: center;
-  font-size: 2.5rem;
-  color: #333;
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  text-align: left;
 }
 
 .arsiv-loading {
@@ -23,7 +32,7 @@
 .arsiv-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 35px;
 }
 
 .arsiv-item {
@@ -31,23 +40,41 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  background: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: #fafafa;
+  padding: 36px;
+  border-radius: 18px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
   text-align: center;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: itemFadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--i) * 0.1s);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+@keyframes itemFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.arsiv-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
 .arsiv-item h2 {
   margin: 0.5rem 0;
-  font-size: 1.8rem;
-  color: #222;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #000;
 }
 
 .arsiv-year {
-  font-size: 1.1rem;
-  color: #666;
-  font-weight: 600;
+  font-size: 1.05rem;
+  color: #555;
+  font-weight: 500;
   margin: 0.25rem 0 0.5rem 0;
 }
 
@@ -56,16 +83,19 @@
   max-width: 800px;
   height: auto;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 16px;
   margin-bottom: 1rem;
+  background-color: #eee;
 }
 
 .arsiv-description {
   text-align: justify;
   white-space: normal;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
   width: 100%;
+  font-size: 1.05rem;
+  color: #333;
 }
 
 .arsiv-description p {
@@ -75,14 +105,18 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .arsiv-container {
-    padding-top: calc(70px + 1rem); /* Mobilde navbar biraz daha küçük */
+    padding: 20px 20px 60px 20px;
   }
   
   .arsiv-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+  }
+  
+  .arsiv-item {
+    padding: 28px;
   }
   
   .arsiv-item h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }

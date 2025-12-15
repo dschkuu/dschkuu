@@ -16,8 +16,8 @@ function ArsivPage() {
   }, []);
 
   useEffect(() => {
-    // Sayfa yüklendiğinde navbar'ın hemen altına scroll yap
-    window.scrollTo(0, 0);
+    // Sayfa yüklendiğinde en üste scroll yap
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   if (loading) return <p className="arsiv-loading">Yükleniyor...</p>;
@@ -25,10 +25,14 @@ function ArsivPage() {
 
   return (
     <div className="arsiv-container">
-      <h1 className="arsiv-title">Arşiv</h1>
+      <h2 className="arsiv-title">Arşiv</h2>
       <div className="arsiv-list">
-        {entries.map((entry) => (
-          <div key={entry.id} className="arsiv-item">
+        {entries.map((entry, index) => (
+          <div 
+            key={entry.id} 
+            className="arsiv-item"
+            style={{ "--i": index }}
+          >
             {entry.photo && (
               <img src={entry.photo} alt={entry.name} className="arsiv-photo" />
             )}

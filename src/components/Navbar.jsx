@@ -90,7 +90,7 @@ function Navbar() {
         <div className="navbar-left">
           <div className="logo" onClick={handleLogoClick}>
             <img src="/logo.png" alt="Logo" className="logo-img" />
-            <span className="logo-text">DSC Hasan Kalyoncu Üniversitesi</span>
+            <span className="logo-text">Hasan Kalyoncu Üniversitesi</span>
           </div>
         </div>
 
