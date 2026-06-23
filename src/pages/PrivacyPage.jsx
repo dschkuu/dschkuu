@@ -12,7 +12,7 @@ function PrivacyPage() {
       <h2 className="page-title">Gizlilik Politikası</h2>
 
       <p className="privacy-intro">
-        Bu web sitesi, Hasan Kalyoncu Üniversitesi Developer Student Club (DSC HKÜ) tarafından hazırlanmıştır.
+        Bu web sitesi, Hasan Kalyoncu Üniversitesi Developer Student Club (DSC HKU) tarafından hazırlanmıştır.
         Kullanıcı gizliliği bizim için önemlidir. Bu politika, web sitemizde toplanan verilerin nasıl
         kullanıldığını ve korunduğunu açıklar.
       </p>
@@ -54,7 +54,7 @@ function PrivacyPage() {
         <h3 className="section-title">3. Reklamlar</h3>
         <p>
           Üçüncü taraf reklamlar kullanılabilir. Reklam sağlayıcıları çerez veya benzeri
-          teknolojilerle kullanıcı davranışlarını analiz edebilir. DSC HKÜ, reklamların içeriği
+          teknolojilerle kullanıcı davranışlarını analiz edebilir. DSC HKU, reklamların içeriği
           ve doğruluğundan sorumlu değildir. Reklamlardan kaynaklı herhangi bir zarardan kullanıcı
           sorumludur.
         </p>
@@ -77,7 +77,7 @@ function PrivacyPage() {
         <h3 className="section-title">5. Bilgi Güvenliği</h3>
         <p>
           Toplanan bilgiler güvenli sunucularda saklanır ve yetkisiz erişime karşı korunur.
-          DSC HKÜ, veri kaybı veya kötüye kullanım riskini en aza indirmek için gerekli
+          DSC HKU, veri kaybı veya kötüye kullanım riskini en aza indirmek için gerekli
           teknik ve idari önlemleri alır.
         </p>
       </div>
@@ -91,7 +91,7 @@ function PrivacyPage() {
         <p className="privacy-mail">
           <a
             className="mail-link"
-            href="mailto:dschkuu@gmail.com?subject=Gizlilik Politikası Hakkında&body=Merhaba DSC HKÜ ekibi,"
+            href="mailto:dschkuu@gmail.com?subject=Gizlilik Politikası Hakkında&body=Merhaba DSC HKU ekibi,"
           >
             dschkuu@gmail.com
           </a>

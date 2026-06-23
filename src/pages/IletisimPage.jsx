@@ -16,9 +16,9 @@ function IletisimPage() {
     }
   }, []);
 
-  const emailSubject = encodeURIComponent("DSC HKÜ İletişim Talebi");
+  const emailSubject = encodeURIComponent("DSC HKU İletişim Talebi");
   const emailBody = encodeURIComponent(
-    "Merhaba DSC HKÜ Ekibi,\n\nSizinle aşağıdaki konuda iletişime geçmek istiyorum:\n\n(Kısaca buraya yazınız...)\n\nTeşekkür ederim,\nAdınız Soyadınız"
+    "Merhaba DSC HKU Ekibi,\n\nSizinle aşağıdaki konuda iletişime geçmek istiyorum:\n\n(Kısaca buraya yazınız...)\n\nTeşekkür ederim,\nAdınız Soyadınız"
   );
   const mailtoLink = `mailto:dschkuu@gmail.com?subject=${emailSubject}&body=${emailBody}`;
 

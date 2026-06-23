@@ -11,7 +11,7 @@ function TermsPage() {
       <h2 className="page-title">Kullanım Şartları</h2>
 
       <p className="terms-intro">
-        Bu web sitesi, Hasan Kalyoncu Üniversitesi Developer Student Club (DSC HKÜ) topluluğu
+        Bu web sitesi, Hasan Kalyoncu Üniversitesi Developer Student Club (DSC HKU) topluluğu
         tarafından hazırlanmıştır. Site, topluluk etkinlikleri, blog yazıları ve duyurular hakkında
         bilgi vermek amacıyla oluşturulmuştur.
       </p>
@@ -28,7 +28,7 @@ function TermsPage() {
       <div className="terms-section">
         <h3 className="section-title">2. İçerik Kullanımı</h3>
         <p>
-          Web sitesindeki tüm içerik (metin, görsel, logo vb.) DSC HKÜ’ye aittir veya ilgili kaynak
+          Web sitesindeki tüm içerik (metin, görsel, logo vb.) DSC HKU’ye aittir veya ilgili kaynak
           belirtilmiştir. İzinsiz çoğaltılması, dağıtılması veya ticari amaçla kullanılması yasaktır.
           İçerikler yalnızca kişisel ve bilgilendirme amaçlı kullanılabilir.
         </p>
@@ -37,7 +37,7 @@ function TermsPage() {
       <div className="terms-section">
         <h3 className="section-title">3. Sorumluluk Reddi</h3>
         <p>
-          DSC HKÜ, sitede sunulan bilgilerin doğruluğunu korumaya çalışsa da; hata, eksiklik,
+          DSC HKU, sitede sunulan bilgilerin doğruluğunu korumaya çalışsa da; hata, eksiklik,
           teknik aksaklık veya içerikten kaynaklı herhangi bir zarar veya kayıptan sorumlu değildir.
           Siteyi kullanmanız, tüm riskleri kabul ettiğiniz anlamına gelir.
         </p>
@@ -47,7 +47,7 @@ function TermsPage() {
         <h3 className="section-title">4. Harici Bağlantılar</h3>
         <p>
           Site, üçüncü taraf web sitelerine bağlantılar içerebilir. Bu bağlantılar yalnızca
-          bilgilendirme amaçlıdır. DSC HKÜ, harici sitelerin içeriklerinden, gizlilik politikalarından
+          bilgilendirme amaçlıdır. DSC HKU, harici sitelerin içeriklerinden, gizlilik politikalarından
           veya hizmetlerinden sorumlu tutulamaz.
         </p>
       </div>
@@ -56,12 +56,12 @@ function TermsPage() {
         <h3 className="section-title">5. Reklamlar ve Çerezler</h3>
         <p>
           Sitede üçüncü taraf reklamlar bulunabilir. Reklam sağlayıcıları çerezler veya benzeri
-          teknolojiler kullanabilir. DSC HKÜ, reklamların içeriği, doğruluğu veya güvenilirliğinden
+          teknolojiler kullanabilir. DSC HKU, reklamların içeriği, doğruluğu veya güvenilirliğinden
           sorumlu değildir. Kullanıcı, reklamları görüntüleyerek bu şartları kabul etmiş sayılır.
         </p>
         <p>
           Herhangi bir reklamın neden olabileceği doğrudan veya dolaylı zararlardan kullanıcı sorumludur;
-          DSC HKÜ bu tür zararlar nedeniyle sorumlu tutulamaz.
+          DSC HKU bu tür zararlar nedeniyle sorumlu tutulamaz.
         </p>
       </div>
 
@@ -88,7 +88,7 @@ function TermsPage() {
           Sorular ve talepler için:{" "}
           <a
             className="mail-link"
-            href="mailto:dschkuu@gmail.com?subject=Kullanım Şartları Hakkında&body=Merhaba DSC HKÜ ekibi,"
+            href="mailto:dschkuu@gmail.com?subject=Kullanım Şartları Hakkında&body=Merhaba DSC HKU ekibi,"
           >
             dschkuu@gmail.com
           </a>
